@@ -8,8 +8,5 @@ __pycache__/
 # ignore StarUML software
 *.mdj
 
-# ignore the requirements.txt
-requirements.txt
-
 # ignore vscode environment
 .vscode/
