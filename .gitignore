@@ -11,5 +11,5 @@ __pycache__/
 # ignore the requirements.txt
 requirements.txt
 
-# ignore vscode dir
+# ignore vscode environment
 .vscode/
