@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+{% block title%}Login{% endblock %}
+
+{% block content %}
+    <h1>Bienvenue</h1>
+    <p class="info">Veuillez-vous identifier</p>
+
+    <form method="POST" action="">
+        <p>
+            <label for="pseudo">Votre pseudo :</label>
+            <input type="text" name="pseudo" id="pseudo"/>
+        </p>
+        <p>
+            <label for="password">Votre mot de passe :</label>
+            <input type="password" name="password" id="password"/>
+        </p>
+    </form>
+{% endblock %}

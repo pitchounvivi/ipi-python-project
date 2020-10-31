@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
-    <title>LDVELH</title>
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-   <h1>Bienvenue sur ce site du Livre Dont Vous Etes Le Héros</h1>
+    <nav class="nav">
+        <button class="bouton" type="button">
+            <a class="loginPage" href="{{ url_for('login')}}">S'indentifier</a>
+        </button>
+        <button class="bouton" type="button">
+            <a class="registerPage" href="{{ url_for('register')}}">S'enregistrer</a>
+        </button>
+    </nav>
+    <div class="container">
+        <p> Index Page </p>
+        {% block content %}{% endblock %}
+    </div>
 </body>
 </html>
