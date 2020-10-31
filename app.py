@@ -2,7 +2,7 @@
 # coding: utf-8
 
 """Flask Module"""
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
