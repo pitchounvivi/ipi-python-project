@@ -3,26 +3,39 @@
 {% block title%}Register{% endblock %}
 
 {% block content %}
+{% block nav %}
+    <nav class="nav">
+        <button class="bouton" type="button">
+            <a class="indexPage" href="{{ url_for('index')}}">Retour à l'Accueil</a>
+        </button>
+        <button class="bouton" type="button">
+            <a class="loginPage" href="{{ url_for('login')}}">S'indentifier</a>
+        </button>
+    </nav>
+{% endblock %}
+
     <h1>Bienvenue</h1>
     <p class="info">Veuillez-vous enregistrer</p>
 
 
-    <form method="POST" action="">
+    <form method="GET" action="{{ url_for('homepage')}}">
         <p>
             <label for="pseudo">Votre pseudo :</label>
-            <input type="text" name="pseudo" id="pseudo"/>
+            <input type="text" name="pseudo" id="pseudo" autofocus required/>
         </p>
         <p>
             <label for="nom">Votre nom :</label>
-            <input type="text" name="nom" id="nom"/>
+            <input type="text" name="nom" id="nom" required/>
         </p>
         <p>
             <label for="email">Votre email :</label>
-            <input type="email" name="nom" id="nom"/>
+            <input type="email" name="nom" id="nom" required/>
         </p>
         <p>
             <label for="password">Votre mot de passe :</label>
-            <input type="password" name="password" id="password"/>
+            <input type="password" name="password" id="password" required/>
         </p>
+        <input type="submit" value="Valider"/>
+        <input type="reset" value="Effacer"/>
     </form>
 {% endblock %}

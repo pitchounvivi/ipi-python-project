@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block title%}Homepage{% endblock %}
+
+{% block content %}
+{% block nav %}
+    <nav class="nav">
+        <button class="bouton" type="button">
+            <a class="indexPage" href="{{ url_for('index')}}">Retour à l'Accueil</a>
+    </nav>
+{% endblock %}
+
+    <h1>Accueil</h1>
+
+    <p>Content de vous voir <strong>{{pseudo}}</strong></p>
+    
+{% endblock %}

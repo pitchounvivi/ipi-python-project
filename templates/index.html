@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
-    <title>{% block title %}{% endblock %}</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title%}LDVELH{% endblock %}
+
+{% block content %}
+{% block nav %}
     <nav class="nav">
         <button class="bouton" type="button">
             <a class="loginPage" href="{{ url_for('login')}}">S'indentifier</a>
@@ -14,9 +12,11 @@
             <a class="registerPage" href="{{ url_for('register')}}">S'enregistrer</a>
         </button>
     </nav>
+{% endblock %}
+
+   
     <div class="container">
         <p> Index Page </p>
-        {% block content %}{% endblock %}
+        <p>Petite présentation du site</p>
     </div>
-</body>
-</html>
+{% endblock %}
