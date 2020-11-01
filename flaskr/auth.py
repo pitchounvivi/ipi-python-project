@@ -38,7 +38,7 @@ def register():
 
         if error is None:
             db.execute(
-                'INSERT INTO user (username, lastname, firstname, email,password) VALUES (?, ?, ?, ?, ?)',
+                'INSERT INTO user (user_username, user_lastname, user_firstname, user_email, user_password) VALUES (?, ?, ?, ?, ?)',
                 (username, lastname, firstname, email, generate_password_hash(password))
             )
             db.commit()
