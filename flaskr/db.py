@@ -25,7 +25,7 @@ def close_db(e=None) :
 def init_db() :
     db = get_db()
 
-    with current_app.open_ressource('lvdeh.sql') as f:
+    with current_app.open_ressource('lvdelh.sql') as f:
         db.executescript(f.read().decode('utf8'))
 
 @click.command('init-db')
