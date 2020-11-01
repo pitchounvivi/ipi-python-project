@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>LDVELH</title>
-</head>
-<body>
-   <h1>Bienvenue sur ce site de Livre Dont Vous Etes Le Héros</h1>
-</body>
-</html>
+{% extends 'index.html' %}
+
+{% block title%}Homepage{% endblock %}
+
+{% block content %}
+{% block nav %}
+    <nav class="nav">
+        <button class="bouton" type="button">
+            <a class="indexPage" href="{{ url_for('index')}}">Retour à l'Accueil</a>
+    </nav>
+{% endblock %}
+
+    <h1>Accueil</h1>
+
+    <p>Content de vous voir <strong>{{pseudo}}</strong></p>
+ 
+{% endblock %}

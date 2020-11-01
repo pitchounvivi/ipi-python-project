@@ -1,6 +1,9 @@
+#! /usr/bin/env python3 #ligne pour l'interpréteur Python
+# coding: utf-8
+
 import os
 
-from flask import Flask, render_template, app
+from flask import Flask, render_template, app, request
 
 def create_app(test_config=None) :
     """create and configure the app"""
@@ -22,25 +25,34 @@ def create_app(test_config=None) :
     
 
     #____ROUTES____
+    # Config options
+    # app.config.from_object('config')
 
-    #homepage
-    @app.route('/homepage') # URL page in the browser
-    def homepage() :
-        """return the homepage template"""
-        return render_template('homepage.html')
+    @app.route('/')
+    def index():
+        """index"""
+        return render_template('index.html')
 
-    #homepage
-    @app.route('/test')
-    def test() :
-        """return the test template"""
-        return render_template('test.html')
-    
-    
-    
-    
-    
-    
-    
+    @app.route('/login/')
+    def login():
+        """login"""
+        return render_template('login.html')
+
+    @app.route('/register/')
+    def register():
+        """register"""
+        return render_template('register.html')
+
+    @app.route('/homepage/')
+    def homepage():
+        """homepage"""
+        pseudo = request.args.get('pseudo')
+        return render_template('homepage.html',
+                                pseudo=pseudo)
+
+
+
+
     
     
     
