@@ -19,8 +19,11 @@
 
     <form method="GET" action="{{ url_for('homepage')}}">
         <p>
-            <label for="pseudo">Votre pseudo :</label>
-            <input type="text" name="pseudo" id="pseudo" autofocus required/>
+            <label for="lastname">Votre nom :</label>
+            <input type="text" name="lastname" id="lastname" required/>
+        </p><p>
+            <label for="firstname">Votre prénom :</label>
+            <input type="text" name="firstname" id="firstname" autofocus required/>
         </p>
         <p>
             <label for="password">Votre mot de passe :</label>

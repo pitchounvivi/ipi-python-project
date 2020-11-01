@@ -46,9 +46,11 @@ def create_app(test_config=None) :
     @app.route('/homepage/')
     def homepage():
         """homepage"""
-        pseudo = request.args.get('pseudo')
+        lastname = request.args.get('lastname')
+        firstname = request.args.get('firstname')
         return render_template('homepage.html',
-                                pseudo=pseudo)
+                                lastname=lastname,
+                                firstname=firstname)
 
 
 
