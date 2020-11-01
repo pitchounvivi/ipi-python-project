@@ -21,7 +21,8 @@ def close_db(e=None) :
 
     if db is not None:
         db.close()
-
+        
+# to do: doc string
 def init_db() :
     db = get_db()
 
