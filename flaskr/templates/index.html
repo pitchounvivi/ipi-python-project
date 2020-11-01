@@ -6,10 +6,10 @@
 {% block nav %}
     <nav class="nav">
         <button class="bouton" type="button">
-            <a class="loginPage" href="{{ url_for('login')}}">S'indentifier</a>
+            <a class="loginPage" href="{{ url_for('auth.login')}}">S'indentifier</a>
         </button>
         <button class="bouton" type="button">
-            <a class="registerPage" href="{{ url_for('register')}}">S'enregistrer</a>
+            <a class="registerPage" href="{{ url_for('auth.register')}}">S'enregistrer</a>
         </button>
     </nav>
 {% endblock %}
@@ -18,7 +18,7 @@
     <div class="container">
         <p>Petite présentation du site :</p>
         <br/>
-        <p>Inscrivez-vous et profitez des joies de la lecture mais décidez du dérouler de l'histoire</p>
+        <p>Inscrivez-vous et profitez des joies de la lecture mais décidez du déroulé de l'histoire</p>
     </div>
 
 {% endblock %}

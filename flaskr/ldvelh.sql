@@ -1,7 +1,7 @@
 --
--- Fichier généré par SQLiteStudio v3.2.1 sur dim. nov. 1 10:40:51 2020
+-- Fichier gï¿½nï¿½rï¿½ par SQLiteStudio v3.2.1 sur dim. nov. 1 10:40:51 2020
 --
--- Encodage texte utilisé : System
+-- Encodage texte utilisï¿½ : System
 --
 PRAGMA foreign_keys = off;
 BEGIN TRANSACTION;
@@ -50,6 +50,7 @@ DROP TABLE IF EXISTS user;
 
 CREATE TABLE user (
     user_id        INTEGER       PRIMARY KEY AUTOINCREMENT,
+    user_username  VARCHAR (50)  NOT NULL UNIQUE,
     user_firstname VARCHAR (50)  NOT NULL,
     user_lastname  VARCHAR (50)  NOT NULL,
     user_email     VARCHAR (150) NOT NULL,

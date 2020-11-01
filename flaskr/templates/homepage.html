@@ -5,13 +5,18 @@
 {% block content %}
 {% block nav %}
     <nav class="nav">
-        <button class="bouton" type="button">
+        <!-- <button class="bouton" type="button">
             <a class="indexPage" href="{{ url_for('index')}}">Retour à l'Accueil</a>
+        </button> -->
+        <!-- <button class="bouton" type="button">
+            <a class="logout" href="{{ url_for('auth.logout')}}">Déconnexion</a>
+        </button> -->
     </nav>
 {% endblock %}
 
     <h1>Accueil</h1>
 
-    <p>Content de vous voir <strong>{{lastname}}</strong> <strong>{{firstname}}</strong></p>
+    <p>Content de vous voir </p>
+        <!-- <strong>{{lastname}}</strong> <strong>{{firstname}}</strong></p> -->
  
 {% endblock %}

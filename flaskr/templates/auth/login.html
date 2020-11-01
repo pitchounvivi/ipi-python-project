@@ -9,7 +9,7 @@
             <a class="indexPage" href="{{ url_for('index')}}">Retour à l'Accueil</a>
         </button>
         <button class="bouton" type="button">
-            <a class="registerPage" href="{{ url_for('register')}}">S'enregistrer</a>
+            <a class="registerPage" href="{{ url_for('auth.register')}}">S'enregistrer</a>
         </button>
     </nav>
 {% endblock %}
@@ -17,13 +17,10 @@
     <h1>Bienvenue</h1>
     <p class="info">Veuillez-vous identifier</p>
 
-    <form method="GET" action="{{ url_for('homepage')}}">
+    <form method="POST">
         <p>
-            <label for="lastname">Votre nom :</label>
-            <input type="text" name="lastname" id="lastname" required/>
-        </p><p>
-            <label for="firstname">Votre prénom :</label>
-            <input type="text" name="firstname" id="firstname" autofocus required/>
+            <label for="username">Votre pseudo :</label>
+            <input type="text" name="username" id="username" required/>
         </p>
         <p>
             <label for="password">Votre mot de passe :</label>
@@ -31,4 +28,9 @@
         </p>
         <input type="submit" value="Valider"/>
     </form>
+
+    {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+
 {% endblock %}
