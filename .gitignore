@@ -13,3 +13,6 @@ __pycache__/
 
 # ignore bdd
 lvdelh.sql
+
+# ignore instance
+instance/
