@@ -10,3 +10,6 @@ __pycache__/
 
 # ignore vscode environment
 .vscode/
+
+# ignore bdd
+lvdeh.sql
