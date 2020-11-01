@@ -7,7 +7,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from flaskr.db import get_db
 
-bp = Blueprint('auth', __name__, url_prefix='/auth')
+bp = Blueprint('auth', __name__, url_prefix='auth/')
 
 
 @bp.route('/register', methods=('GET', 'POST'))
@@ -32,17 +32,17 @@ def register():
         elif not password:
             error = 'Password is required.'
         elif db.execute(
-            'SELECT id FROM user WHERE username = ?', (username,)
+            'SELECT id FROM user WHERE user_username = ?', (username,)
         ).fetchone() is not None:
             error = 'User {} is already registered.'.format(username)
 
         if error is None:
             db.execute(
-                'INSERT INTO user (username, lastname, firstname, email,password) VALUES (?, ?, ?, ?, ?)',
+                'INSERT INTO user (user_username, user_lastname, user_firstname, user_email, user_password) VALUES (?, ?, ?, ?, ?)',
                 (username, lastname, firstname, email, generate_password_hash(password))
             )
             db.commit()
-            return redirect(url_for('auth.login'))
+            return redirect(url_for('login'))
 
         flash(error)
 
@@ -87,18 +87,18 @@ def load_logged_in_user():
         ).fetchone()
 
 
-# @bp.route('/logout')
-# def logout():
-#     session.clear()
-#     return redirect(url_for('index'))
+@bp.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('index'))
 
 
-# def login_required(view):
-#     @functools.wraps(view)
-#     def wrapped_view(**kwargs):
-#         if g.user is None:
-#             return redirect(url_for('auth.login'))
+def login_required(view):
+    @functools.wraps(view)
+    def wrapped_view(**kwargs):
+        if g.user is None:
+            return redirect(url_for('login'))
 
-#         return view(**kwargs)
+        return view(**kwargs)
 
-#     return wrapped_view
+    return wrapped_view

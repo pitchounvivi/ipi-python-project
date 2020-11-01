@@ -34,25 +34,25 @@ def create_app(test_config=None) :
         """index"""
         return render_template('index.html')
 
-    # @app.route('/login/')
-    # def login():
-    #     """login"""
-    #     return render_template('login.html')
+    @app.route('/login/')
+    def login():
+        """login"""
+        return render_template('auth/login.html')
 
-    # @app.route('/register/')
-    # def register():
-    #     """register"""
-    #     return render_template('register.html')
+    @app.route('/register/')
+    def register():
+        """register"""
+        return render_template('auth/register.html')
 
-    # @app.route('/homepage')
-    # def homepage():
-    #     """homepage"""
-    #     # lastname = request.args.get('lastname')
-    #     # firstname = request.args.get('firstname')
-    #     # return render_template('homepage.html',
-    #     #                         lastname=lastname,
-    #     #                         firstname=firstname)
-    #     return render_template('homepage.html')
+    @app.route('/homepage')
+    def homepage():
+        """homepage"""
+        lastname = request.args.get('lastname')
+        firstname = request.args.get('firstname')
+        return render_template('homepage.html',
+                                lastname=lastname,
+                                firstname=firstname)
+        return render_template('homepage.html')
 
 
 
