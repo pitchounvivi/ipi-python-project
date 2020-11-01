@@ -1,20 +1,4 @@
 /*file for styles*/
-h1 {
-    color: red;
-}
-
-.nav {
-    background-color: lightskyblue;
-    padding: 10px;
-    margin-top: 60px;
-    top: 20%;
-}
-
-.info {
-    font-weight: bold;
-    font-size: x-large;
-}
-
 header {
     display: flexbox;
     position: absolute;
@@ -39,3 +23,24 @@ footer {
     bottom: 0%;
     text-align: center;
 }
+
+.nav {
+    background-color: lightskyblue;
+    padding: 10px;
+    margin-top: 60px;
+    top: 20%;
+}
+
+.info {
+    font-weight: bold;
+    font-size: x-large;
+}
+
+h1 {
+    color: red;
+}
+
+.container {
+    text-align: center;
+}
+
