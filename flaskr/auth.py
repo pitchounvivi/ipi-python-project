@@ -16,7 +16,7 @@ def register():
         username = request.form['username']
         lastname = request.form['lastname']
         firstname = request.form['firstname']
-        email = request.form['email'] #J'ai essayé de remplacer 'nom' par 'mail' et de le changer dans le form => erreur ! Incompréhensible
+        email = request.form['email']
         password = request.form['password']
         db = get_db()
         error = None
@@ -32,7 +32,7 @@ def register():
         elif not password:
             error = 'Password is required.'
         elif db.execute(
-            'SELECT id FROM user WHERE username = ?', (username,)
+            'SELECT user_id FROM user WHERE user_username = ?', (username,)
         ).fetchone() is not None:
             error = 'User {} is already registered.'.format(username)
 
@@ -57,7 +57,7 @@ def login():
         db = get_db()
         error = None
         user = db.execute(
-            'SELECT * FROM user WHERE username = ?', (username,)
+            'SELECT * FROM user WHERE user_username = ?', (username,)
         ).fetchone()
 
         if user is None:
