@@ -50,6 +50,7 @@ def create_app(test_config=None) :
         #                         firstname=firstname)
         return render_template('homepage.html')
 
+
     # Initialize DataBase
     db.init_app(app)
     

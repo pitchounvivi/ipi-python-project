@@ -32,13 +32,13 @@ def register():
         elif not password:
             error = 'Password is required.'
         elif db.execute(
-            'SELECT id FROM user WHERE username = ?', (username,)
+            'SELECT user_id FROM user WHERE user_username = ?', (username)
         ).fetchone() is not None:
             error = 'User {} is already registered.'.format(username)
 
         if error is None:
             db.execute(
-                'INSERT INTO user (username, lastname, firstname, email,password) VALUES (?, ?, ?, ?, ?)',
+                'INSERT INTO user (user_username, user_lastname, user_firstname, user_email, user_password) VALUES (?, ?, ?, ?, ?)',
                 (username, lastname, firstname, email, generate_password_hash(password))
             )
             db.commit()
@@ -57,7 +57,7 @@ def login():
         db = get_db()
         error = None
         user = db.execute(
-            'SELECT * FROM user WHERE username = ?', (username,)
+            'SELECT * FROM user WHERE user_username = ?', (username,)
         ).fetchone()
 
         if user is None:
@@ -83,7 +83,7 @@ def load_logged_in_user():
         g.user = None
     else:
         g.user = get_db().execute(
-            'SELECT * FROM user WHERE id = ?', (user_id,)
+            'SELECT * FROM user WHERE user_id = ?', (user_id,)
         ).fetchone()
 
 
