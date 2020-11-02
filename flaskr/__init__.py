@@ -1,6 +1,7 @@
 #! /usr/bin/env python3 #ligne pour l'interpréteur Python
 # coding: utf-8
 
+"""Application Module"""
 import os
 
 from flask import Flask, render_template, app, request
@@ -24,12 +25,12 @@ def create_app(test_config=None) :
         app.config.from_pyfile('config.py', silent=True)
     else:
         app.config.from_mapping(test_config)
-    
+
     try:
         os.makedirs(app.instance_path)
     except OSError:
         pass
-    
+
 
     #____ROUTES____
     # Config options
@@ -53,7 +54,7 @@ def create_app(test_config=None) :
 
     # Initialize DataBase
     db.init_app(app)
-    
+
     # Loading the path of authentication routes
     app.register_blueprint(auth.bp)
 

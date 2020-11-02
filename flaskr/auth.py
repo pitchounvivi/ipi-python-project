@@ -1,3 +1,4 @@
+"""Authentification Module"""
 import functools
 
 from flask import (
@@ -12,6 +13,7 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 @bp.route('/register/', methods=('GET', 'POST'))
 def register():
+    """Register function"""
     if request.method == 'POST':
         username = request.form['username']
         lastname = request.form['lastname']
@@ -28,7 +30,7 @@ def register():
         elif not firstname:
             error = 'Firstname is required.'
         elif not email:
-            error = 'Email is required.'    
+            error = 'Email is required.'
         elif not password:
             error = 'Password is required.'
         elif db.execute(
@@ -38,7 +40,9 @@ def register():
 
         if error is None:
             db.execute(
-                'INSERT INTO user (user_username, user_lastname, user_firstname, user_email, user_password) VALUES (?, ?, ?, ?, ?)',
+                'INSERT INTO user (user_username, user_lastname, '
+                + 'user_firstname, user_email, user_password)'
+                + 'VALUES (?, ?, ?, ?, ?)',
                 (username, lastname, firstname, email, generate_password_hash(password))
             )
             db.commit()
@@ -51,6 +55,7 @@ def register():
 
 @bp.route('/login/', methods=('GET', 'POST'))
 def login():
+    """Login"""
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -74,9 +79,9 @@ def login():
 
     return render_template('auth/login.html')
 
-
 @bp.before_app_request
 def load_logged_in_user():
+    """Verification user"""
     user_id = session.get('user_id')
 
     if user_id is None:
@@ -86,14 +91,14 @@ def load_logged_in_user():
             'SELECT * FROM user WHERE user_id = ?', (user_id,)
         ).fetchone()
 
-
 @bp.route('/logout')
 def logout():
+    """deconnection and clear session"""
     session.clear()
     return redirect(url_for('index'))
 
-
 def login_required(view):
+    """verification user logge"""
     @functools.wraps(view)
     def wrapped_view(**kwargs):
         if g.user is None:
