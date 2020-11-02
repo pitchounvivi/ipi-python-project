@@ -16,7 +16,7 @@ def register():
         username = request.form['username']
         lastname = request.form['lastname']
         firstname = request.form['firstname']
-        email = request.form['email']
+        email = request.form['email'] #J'ai essayé de remplacer 'nom' par 'mail' et de le changer dans le form => erreur ! Incompréhensible
         password = request.form['password']
         db = get_db()
         error = None
@@ -83,7 +83,7 @@ def load_logged_in_user():
         g.user = None
     else:
         g.user = get_db().execute(
-            'SELECT * FROM user WHERE id = ?', (user_id,)
+            'SELECT * FROM user WHERE user_id = ?', (user_id,)
         ).fetchone()
 
 
