@@ -5,6 +5,12 @@ import os
 
 from flask import Flask, render_template, app, request
 
+# Call init_app function from db.py
+from . import db
+
+# Call auth.bp function from auth.py
+from . import auth
+
 
 def create_app(test_config=None) :
     """create and configure the app"""
@@ -34,41 +40,20 @@ def create_app(test_config=None) :
         """index"""
         return render_template('index.html')
 
-    # @app.route('/login/')
-    # def login():
-    #     """login"""
-    #     return render_template('login.html')
+    @app.route('/homepage/')
+    def homepage():
+        """homepage"""
+        # lastname = request.args.get('lastname')
+        # firstname = request.args.get('firstname')
+        # return render_template('homepage.html',
+        #                         lastname=lastname,
+        #                         firstname=firstname)
+        return render_template('homepage.html')
 
-    # @app.route('/register/')
-    # def register():
-    #     """register"""
-    #     return render_template('register.html')
-
-    # @app.route('/homepage')
-    # def homepage():
-    #     """homepage"""
-    #     # lastname = request.args.get('lastname')
-    #     # firstname = request.args.get('firstname')
-    #     # return render_template('homepage.html',
-    #     #                         lastname=lastname,
-    #     #                         firstname=firstname)
-    #     return render_template('homepage.html')
-
-
-
-
-    
-    
-    
-    
-    # Call init_app function from db.py
-    from . import db
+    # Initialize DataBase
     db.init_app(app)
     
-    return app
-
-    # Call auth.bp function from auth.py
-    from . import auth
+    # Loading the path of authentication routes
     app.register_blueprint(auth.bp)
 
     return app
