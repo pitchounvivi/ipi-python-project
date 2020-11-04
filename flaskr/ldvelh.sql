@@ -7,7 +7,7 @@ PRAGMA foreign_keys = off;
 BEGIN TRANSACTION;
 
 -- Table : book
-DROP TABLE IF EXISTS book;
+-- DROP TABLE IF EXISTS book;
 
 CREATE TABLE book (
     book_id    INTEGER       PRIMARY KEY AUTOINCREMENT,
@@ -16,7 +16,7 @@ CREATE TABLE book (
 
 
 -- Table : book_user
-DROP TABLE IF EXISTS book_user;
+-- DROP TABLE IF EXISTS book_user;
 
 CREATE TABLE book_user (
     book_id   INTEGER (11) REFERENCES book (book_id),
@@ -26,7 +26,7 @@ CREATE TABLE book_user (
 
 
 -- Table : chapter
-DROP TABLE IF EXISTS chapter;
+-- DROP TABLE IF EXISTS chapter;
 
 CREATE TABLE chapter (
     chap_id      INTEGER       PRIMARY KEY AUTOINCREMENT,
@@ -37,7 +37,7 @@ CREATE TABLE chapter (
 
 
 -- Table : lecture
-DROP TABLE IF EXISTS lecture;
+-- DROP TABLE IF EXISTS lecture;
 
 CREATE TABLE lecture (
     id_user INTEGER REFERENCES user (user_id),
@@ -46,7 +46,7 @@ CREATE TABLE lecture (
 
 
 -- Table : user
-DROP TABLE IF EXISTS user;
+-- DROP TABLE IF EXISTS user;
 
 CREATE TABLE user (
     user_id        INTEGER       PRIMARY KEY AUTOINCREMENT,
