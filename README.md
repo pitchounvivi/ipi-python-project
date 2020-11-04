@@ -13,11 +13,11 @@ set FLASK_APP=flaskr
 Mode debug
 set FLASK_ENV=developement
 
-Lancer le serveur
-flask run
-
 
 Initialisation de la bdd (laisser la variable DATABASE tel quel)
 flask init-db
 
+
+Lancer le serveur
+flask run
 
