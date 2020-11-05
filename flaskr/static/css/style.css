@@ -44,3 +44,7 @@ h1 {
     text-align: center;
 }
 
+.flash {
+    font-weight: bold;
+    color: magenta;
+}

@@ -42,8 +42,10 @@
         <input type="reset" value="Effacer"/>
     </form>
 
+    <br/>
+    <br/>
     {% for message in get_flashed_messages() %}
-        <div class="flash">{{ message }}</div>
+        <div class="flash">!!! {{ message }} !!!</div>
     {% endfor %}
 
 {% endblock %}
