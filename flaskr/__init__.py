@@ -44,12 +44,8 @@ def create_app(test_config=None) :
     @app.route('/homepage/')
     def homepage():
         """homepage"""
-        # lastname = request.args.get('lastname')
-        # firstname = request.args.get('firstname')
-        # return render_template('homepage.html',
-        #                         lastname=lastname,
-        #                         firstname=firstname)
-        return render_template('homepage.html')
+        pseudo = request.args.get('username')
+        return render_template('homepage.html', pseudo=pseudo)
 
 
     # Initialize DataBase
