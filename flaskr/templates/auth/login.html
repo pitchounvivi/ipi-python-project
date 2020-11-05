@@ -29,8 +29,10 @@
         <input type="submit" value="Valider"/>
     </form>
 
+    <br/>
+    <br/>
     {% for message in get_flashed_messages() %}
-        <div class="flash">{{ message }}</div>
+        <div class="flash">!!! {{ message }} !!!</div>
     {% endfor %}
 
 {% endblock %}
