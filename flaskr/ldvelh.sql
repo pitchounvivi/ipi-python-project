@@ -75,10 +75,102 @@ INSERT INTO book (book_title)
 ;
 
 
+-- Table : chapter
 INSERT INTO chapter (chap_title, chap_content, book_id)
  VALUES
- ('chap 1 : début'),
- ('une super histoire'), 
+ ('<h3>chap 1 : début</h3><br/><br/>'),
+ ('<p>une super histoire</p> 
+ <form method="POST"> 
+ <label for="2">Vous voulez allez au 2</label>
+ <input type="radio" name="choix" value="2" />
+ <label for="4">Vous voulez allez au 4</label>
+ <input type="radio" name="choix" value="4" />
+ <input type="submit" value="Valider"/>
+ </form>'), 
+ (1)
+;
+INSERT INTO chapter (chap_title, chap_content, book_id)
+ VALUES
+ ('<h3>chap 2 : suite *</h3><br/><br/>'),
+ ('<p>un bout d''histoire</p>
+ <form method="POST"> 
+ <label for="3">Vous voulez allez au 3</label>
+ <input type="radio" name="choix" value="3" />
+ <label for="5">Vous voulez allez au 5</label>
+ <input type="radio" name="choix" value="5" />
+ <input type="submit" value="Valider"/>
+ </form>'), 
+ (1)
+;
+INSERT INTO chapter (chap_title, chap_content, book_id)
+ VALUES
+ ('<h3>chap 3 : suite **</h3><br/><br/>'),
+ ('<p>un autre bout d''histoire</p>
+ <form method="POST"> 
+ <label for="7">Vous voulez allez au 7</label>
+ <input type="radio" name="choix" value="7" />
+ <label for="5">Vous voulez allez au 5</label>
+ <input type="radio" name="choix" value="5" />
+ <input type="submit" value="Valider"/>
+ </form>'), 
+ (1)
+;
+INSERT INTO chapter (chap_title, chap_content, book_id)
+ VALUES
+ ('<h3>chap 4 : suite ***</h3><br/><br/>'),
+ ('<p>un rebondissement d''histoire</p>
+ <form method="POST"> 
+ <label for="6">Vous voulez allez au 6</label>
+ <input type="radio" name="choix" value="6" />
+ <label for="8">Vous voulez allez au 8</label>
+ <input type="radio" name="choix" value="8" />
+ <input type="submit" value="Valider"/>
+ </form>'), 
+ (1)
+;
+INSERT INTO chapter (chap_title, chap_content, book_id)
+ VALUES
+ ('<h3>chap 5 : suite ****</h3><br/><br/>'),
+ ('<p>une étape de l''histoire</p>
+ <form method="POST"> 
+ <label for="3">Vous voulez allez au 3</label>
+ <input type="radio" name="choix" value="3" />
+ <label for="7">Vous voulez allez au 7</label>
+ <input type="radio" name="choix" value="7" />
+ <input type="submit" value="Valider"/>
+ </form>'), 
+ (1)
+;
+INSERT INTO chapter (chap_title, chap_content, book_id)
+ VALUES
+ ('<h3>chap 6 : suite *****</h3><br/><br/>'),
+ ('<p>une nouvelle étape de l''histoire</p>
+ <form method="POST"> 
+ <label for="4">Vous voulez allez au 4</label>
+ <input type="radio" name="choix" value="4" />
+ <label for="8">Vous voulez allez au 8</label>
+ <input type="radio" name="choix" value="8" />
+ <input type="submit" value="Valider"/>
+ </form>'), 
+ (1)
+;
+INSERT INTO chapter (chap_title, chap_content, book_id)
+ VALUES
+ ('<h3>chap 7 : suite ******</h3><br/><br/>'),
+ ('<p>une autre étape de l''histoire</p>
+ <form method="POST"> 
+ <label for="8">Vous voulez allez au 8</label>
+ <input type="radio" name="choix" value="8" />
+ <label for="5">Vous voulez allez au 5</label>
+ <input type="radio" name="choix" value="5" />
+ <input type="submit" value="Valider"/>
+ </form>'), 
+ (1)
+;
+INSERT INTO chapter (chap_title, chap_content, book_id)
+ VALUES
+ ('<h3>chap 8 : fin</h3><br/><br/>'),
+ ('<p>fin de l''histoire</p>'), 
  (1)
 ;
 
