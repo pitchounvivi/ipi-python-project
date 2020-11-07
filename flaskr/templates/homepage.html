@@ -18,4 +18,15 @@
 
     <p>Content de vous voir <strong>{{pseudo}}</strong></p> 
     
+    <p>Voici une liste de livres disponibles : </p> 
+
+    <hr>
+
+    {% for book in books %}
+        <a href="#">
+            <h2>{{ book['book_title'] }}</h2>
+        </a>
+        <hr>
+    {% endfor %}
+    
 {% endblock %}

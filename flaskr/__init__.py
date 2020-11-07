@@ -12,6 +12,8 @@ from . import db
 # Call auth.bp function from auth.py
 from . import auth
 
+from flaskr.db import get_db
+
 
 def create_app(test_config=None) :
     """create and configure the app"""
@@ -45,7 +47,10 @@ def create_app(test_config=None) :
     def homepage():
         """homepage"""
         pseudo = request.args.get('username')
-        return render_template('homepage.html', pseudo=pseudo)
+        db = get_db()
+        books = db.execute('SELECT * FROM book').fetchall()
+        db.commit()
+        return render_template('homepage.html', pseudo=pseudo, books=books)
 
 
     # Initialize DataBase
