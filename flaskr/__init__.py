@@ -4,7 +4,7 @@
 """Application Module"""
 import os
 
-from flask import Flask, render_template, app, request
+from flask import Flask, render_template, app, request, session
 
 # Call init_app function from db.py
 from . import db
@@ -44,13 +44,19 @@ def create_app(test_config=None) :
     @app.route('/homepage/')
     def homepage():
         """homepage"""
-        pseudo = request.args.get('username')
+        if "username" in session:
+            pseudo = session['username']
         return render_template('homepage.html', pseudo=pseudo)
 
     @app.route('/profil/')
     def profil():
         """profil"""
-        return render_template('profil.html')
+        if session:
+            username = session['username']            
+            firstname = session['firstname']
+            lastname = session['lastname']
+            email = session['email']
+        return render_template('profil.html', username=username, firstname=firstname, lastname=lastname, email=email)
 
 
     # Initialize DataBase
