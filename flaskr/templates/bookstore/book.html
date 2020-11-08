@@ -1,6 +1,6 @@
 {% extends 'index.html' %}
 
-{% block title%}Homepage{% endblock %}
+{% block title%}BOOK{% endblock %}
 
 {% block content %}
 {% block nav %}
@@ -14,17 +14,8 @@
     </nav>
 {% endblock %}
 
-    <h1>Accueil</h1>
+    <h1>LIVRE</h1>
 
-    <p>Voici une liste de livres disponibles : </p> 
-
-    <hr>
-
-    {% for book in books %}
-        <a class="book" href="{{ url_for('bookstore.book')}}">
-            <h2>{{ book['book_title'] }}</h2>
-        </a>
-        <hr>
-    {% endfor %}
+    
     
 {% endblock %}

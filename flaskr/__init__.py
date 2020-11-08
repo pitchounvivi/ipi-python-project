@@ -5,14 +5,15 @@
 import os
 
 from flask import Flask, render_template, app, request
+from flaskr.db import get_db
 
 # Call init_app function from db.py
 from . import db
 
 # Call auth.bp function from auth.py
 from . import auth
-
-from flaskr.db import get_db
+# Call book.bp function from book.py
+from . import book
 
 
 def create_app(test_config=None) :
@@ -46,11 +47,12 @@ def create_app(test_config=None) :
     @app.route('/homepage/')
     def homepage():
         """homepage"""
-        pseudo = request.args.get('username')
         db = get_db()
         books = db.execute('SELECT * FROM book').fetchall()
         db.commit()
-        return render_template('homepage.html', pseudo=pseudo, books=books)
+        # pseudo = request.args.get('username')
+        # return render_template('homepage.html', pseudo=pseudo, books=books)
+        return render_template('homepage.html', books=books)
 
 
     # Initialize DataBase
@@ -58,5 +60,6 @@ def create_app(test_config=None) :
 
     # Loading the path of authentication routes
     app.register_blueprint(auth.bp)
+    app.register_blueprint(book.bp)
 
     return app
