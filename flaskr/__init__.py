@@ -47,6 +47,11 @@ def create_app(test_config=None) :
         pseudo = request.args.get('username')
         return render_template('homepage.html', pseudo=pseudo)
 
+    @app.route('/profil/')
+    def profil():
+        """profil"""
+        return render_template('profil.html')
+
 
     # Initialize DataBase
     db.init_app(app)

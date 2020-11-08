@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+{% block title%}Mon Profil{% endblock %}
+
+{% block content %}
+{% block nav %}
+    <nav class="nav">
+        <button class="bouton" type="button">
+            <a class="indexPage" href="{{ url_for('homepage')}}">Retour aux livres</a>
+        </button> 
+        <button class="bouton" type="button">
+            <a class="logout" href="{{ url_for('auth.logout')}}">Déconnexion</a>
+        </button> 
+    </nav>
+{% endblock %}
+
+    <h1>Accueil</h1>
+    
+{% endblock %}
