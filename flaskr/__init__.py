@@ -6,6 +6,8 @@ import os
 
 from flask import Flask, render_template, app, request, session
 
+from flaskr.db import get_db
+
 # Call init_app function from db.py
 from . import db
 
@@ -56,9 +58,20 @@ def create_app(test_config=None) :
             firstname = session['firstname']
             lastname = session['lastname']
             email = session['email']
+
         return render_template('profil.html', username=username, firstname=firstname, lastname=lastname, email=email)
-
-
+    
+    @app.route('/profil/', methods=('GET', 'POST'))
+    def update():
+        """update profil"""
+        if request.method == 'POST' and "id" in session:
+            user_id = session['id']
+            username = request.form['username']
+            db = get_db()
+            user = db.execute('UPDATE user SET user_username = ? WHERE user_id = ?', (username, user_id,))
+            db.commit()
+        return render_template('profil.html', username=username)
+    
     # Initialize DataBase
     db.init_app(app)
 

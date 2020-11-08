@@ -52,7 +52,6 @@ def register():
 
     return render_template('auth/register.html')
 
-
 @bp.route('/login/', methods=('GET', 'POST'))
 def login():
     """Login"""
@@ -77,6 +76,7 @@ def login():
             session['firstname'] = user['user_firstname']
             session['lastname'] = user['user_lastname']
             session['email'] = user['user_email']
+            session['password'] = user['user_password']
             return redirect(url_for('homepage'))
 
         flash(error)
