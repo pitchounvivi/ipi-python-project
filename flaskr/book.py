@@ -11,7 +11,7 @@ bp = Blueprint('bookstore', __name__, url_prefix='/bookstore')
 
 @bp.route('/book/<book_id>/')
 def book(book_id):
-    """Display function"""
+    """Display one book"""
     db = get_db()
     book = db.execute('SELECT * FROM book WHERE book_id = ?',(book_id,)).fetchone()
     db.commit()
@@ -19,3 +19,9 @@ def book(book_id):
         abort(404)
 
     return render_template('bookstore/book.html', book=book)
+
+
+@bp.route('/book/<book_id>/page')
+def page(book_id):
+    """Display one page"""
+    return render_template('bookstore/page.html', book=book_id)

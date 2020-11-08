@@ -1,8 +1,3 @@
---
--- Fichier g�n�r� par SQLiteStudio v3.2.1 sur dim. nov. 1 10:40:51 2020
---
--- Encodage texte utilis� : System
---
 PRAGMA foreign_keys = off;
 BEGIN TRANSACTION;
 

@@ -26,7 +26,7 @@
 
     <p>Souhaitez-vous commencer la lecture ?</p>
     <button class="bouton" type="button">
-        <a class="page" href="#">
+        <a class="page" href="{{ url_for('bookstore.page', book_id=book['book_id'],)}}">
             Commencer la lecture
         </a>
     </button>

@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+
+{% block title%}{{ book['book_title'] }}{% endblock %}
+
+{% block content %}
+{% block nav %}
+    <nav class="nav">
+        <button class="bouton" type="button">
+            <a class="bookstore" href="{{ url_for('homepage')}}">Retour à la bibliothèque</a>
+        </button>
+
+        <button class="bouton" type="button">
+            <a class="logout" href="{{ url_for('auth.logout')}}">Déconnexion</a>
+        </button> 
+    </nav>
+{% endblock %}
+
+    <h1>PAGE</h1>
+
+    
+
+{% endblock %}
