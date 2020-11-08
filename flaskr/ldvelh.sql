@@ -72,7 +72,7 @@ INSERT INTO book (book_title, book_resume)
  VALUES
  ('Promenade en forêt', 'Une histoire de promenade en forêt'),
  ('Super Héros and Co', 'Une compagnie de super héros'),
- ('Bizarre vous avez dit bizarre', 'Etrangeté et autres situations bizarre')
+ ('Bizarre vous avez dit bizarre', 'Etrangetés et autres situations bizarre')
 ;
 
 
