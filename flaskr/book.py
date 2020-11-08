@@ -20,8 +20,15 @@ def book(book_id):
 
     return render_template('bookstore/book.html', book=book)
 
-
-@bp.route('/book/<book_id>/page')
+@bp.route('/book/<book_id>/page/')
 def page(book_id):
     """Display one page"""
-    return render_template('bookstore/page.html', book=book_id)
+    db = get_db()
+    book = db.execute(
+        'SELECT * FROM book WHERE book_id = ?',(book_id,)).fetchone()
+    
+    chap = db.execute(
+        'SELECT * FROM book JOIN chapter WHERE chapter.book_id = book.book_id '
+        + ' AND book.book_id = ?',(book_id,)).fetchone()
+    db.commit()
+    return render_template('bookstore/page.html', book=book, chap=chap)

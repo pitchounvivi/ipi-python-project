@@ -63,7 +63,7 @@ def login():
         error = None
         user = db.execute(
             'SELECT * FROM user WHERE user_username = ?', (username,)
-        ).fetchone()
+            ).fetchone()
 
         if user is None:
             error = 'Incorrect username.'
@@ -73,8 +73,6 @@ def login():
         if error is None:
             session.clear()
             session['id'] = user['user_id']
-            # session['username'] = user['user_username']
-            # return redirect(url_for('homepage', username=username))
             return redirect(url_for('homepage'))
 
         flash(error)
@@ -91,7 +89,7 @@ def load_logged_in_user():
     else:
         g.user = get_db().execute(
             'SELECT * FROM user WHERE user_id = ?', (user_id,)
-        ).fetchone()
+            ).fetchone()
 
 @bp.route('/logout')
 def logout():

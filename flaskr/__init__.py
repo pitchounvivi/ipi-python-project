@@ -50,8 +50,6 @@ def create_app(test_config=None) :
         db = get_db()
         books = db.execute('SELECT * FROM book').fetchall()
         db.commit()
-        # pseudo = request.args.get('username')
-        # return render_template('homepage.html', pseudo=pseudo, books=books)
         return render_template('homepage.html', books=books)
 
 

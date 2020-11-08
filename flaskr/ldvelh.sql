@@ -9,9 +9,10 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS book;
 
 CREATE TABLE book (
-    book_id     INTEGER       PRIMARY KEY AUTOINCREMENT,
-    book_title  VARCHAR (255),
-    book_resume VARCHAR (255)
+    book_id         INTEGER       PRIMARY KEY AUTOINCREMENT,
+    book_title      VARCHAR (255),
+    book_resume     VARCHAR (255),
+    book_first_chap INTEGER (11)  REFERENCES chapter (chap_id)
 );
 
 
@@ -63,18 +64,19 @@ CREATE TABLE user (
 ------------------------------------------------------------------
 
 -- Table : book
-INSERT INTO book (book_title, book_resume)
+INSERT INTO book (book_title, book_resume, book_first_chap)
  VALUES
- ('Promenade en forêt', 'Une histoire de promenade en forêt'),
- ('Super Héros and Co', 'Une compagnie de super héros'),
- ('Bizarre vous avez dit bizarre', 'Etrangetés et autres situations bizarre')
+ ('Promenade en forêt', 'Une histoire de promenade en forêt', 1),
+ ('Super Héros and Co', 'Une compagnie de super héros', 9),
+ ('Bizarre vous avez dit bizarre', 'Etrangetés et autres situations bizarre', 10)
 ;
 
 
 -- Table : chapter
+-- First book
 INSERT INTO chapter (chap_title, chap_content, book_id)
  VALUES
- ('<h3>chap 1 : début</h3><br/><br/>',
+ ('Chap 1 : début',
  '<p>une super histoire</p> 
  <form method="POST"> 
  <label for="2">Vous voulez allez au 2</label>
@@ -87,7 +89,7 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
 ;
 INSERT INTO chapter (chap_title, chap_content, book_id)
  VALUES
- ('<h3>chap 2 : suite *</h3><br/><br/>',
+ ('Chap 2 : suite *',
  '<p>un bout d''histoire</p>
  <form method="POST"> 
  <label for="3">Vous voulez allez au 3</label>
@@ -100,7 +102,7 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
 ;
 INSERT INTO chapter (chap_title, chap_content, book_id)
  VALUES
- ('<h3>chap 3 : suite **</h3><br/><br/>',
+ ('Chap 3 : suite **',
  '<p>un autre bout d''histoire</p>
  <form method="POST"> 
  <label for="7">Vous voulez allez au 7</label>
@@ -113,7 +115,7 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
 ;
 INSERT INTO chapter (chap_title, chap_content, book_id)
  VALUES
- ('<h3>chap 4 : suite ***</h3><br/><br/>',
+ ('Chap 4 : suite ***',
  '<p>un rebondissement d''histoire</p>
  <form method="POST"> 
  <label for="6">Vous voulez allez au 6</label>
@@ -126,7 +128,7 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
 ;
 INSERT INTO chapter (chap_title, chap_content, book_id)
  VALUES
- ('<h3>chap 5 : suite ****</h3><br/><br/>',
+ ('Chap 5 : suite ****',
  '<p>une étape de l''histoire</p>
  <form method="POST"> 
  <label for="3">Vous voulez allez au 3</label>
@@ -139,7 +141,7 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
 ;
 INSERT INTO chapter (chap_title, chap_content, book_id)
  VALUES
- ('<h3>chap 6 : suite *****</h3><br/><br/>',
+ ('Chap 6 : suite *****',
  '<p>une nouvelle étape de l''histoire</p>
  <form method="POST"> 
  <label for="4">Vous voulez allez au 4</label>
@@ -152,7 +154,7 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
 ;
 INSERT INTO chapter (chap_title, chap_content, book_id)
  VALUES
- ('<h3>chap 7 : suite ******</h3><br/><br/>',
+ ('Chap 7 : suite ******',
  '<p>une autre étape de l''histoire</p>
  <form method="POST"> 
  <label for="8">Vous voulez allez au 8</label>
@@ -165,11 +167,26 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
 ;
 INSERT INTO chapter (chap_title, chap_content, book_id)
  VALUES
- ('<h3>chap 8 : fin</h3><br/><br/>',
+ ('Chap 8 : fin',
  '<p>fin de l''histoire</p>', 
  1)
 ;
 
+-- Second book
+INSERT INTO chapter (chap_title, chap_content, book_id)
+ VALUES
+ ('Chap 1 : Début du livre 2',
+ '<p>Début de l''histoire</p>', 
+ 2)
+;
+
+-- Third book
+INSERT INTO chapter (chap_title, chap_content, book_id)
+ VALUES
+ ('Chap 1 : Début du livre 3',
+ '<p>Début de l''histoire du livre 3</p>', 
+ 3)
+;
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
