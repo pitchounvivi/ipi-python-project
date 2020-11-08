@@ -11,12 +11,10 @@ from flaskr.db import get_db
 bp = Blueprint('bookstore', __name__, url_prefix='/bookstore')
 
     
-@bp.route('/book/')
-def book():
+@bp.route('/book/<book_id>/')
+def book(book_id):
     """Display function"""
-    # db = get_db()
-    # book = db.execute('SELECT * FROM book WHERE id = ?',(book_id,)).fetchone()
-    # db.commit()
-    # return redirect(url_for('bookstore/book.html',book=book))
-    return render_template('bookstore/book.html')
-    
+    db = get_db()
+    book = db.execute('SELECT * FROM book WHERE book_id = ?',(book_id,)).fetchone()
+    db.commit()
+    return render_template('bookstore/book.html', book=book)

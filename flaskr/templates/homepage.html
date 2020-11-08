@@ -21,7 +21,7 @@
     <hr>
 
     {% for book in books %}
-        <a class="book" href="{{ url_for('bookstore.book')}}">
+        <a class="book" href="{{ url_for('bookstore.book', book_id=book['book_id'],)}}">
             <h2>{{ book['book_title'] }}</h2>
         </a>
         <hr>

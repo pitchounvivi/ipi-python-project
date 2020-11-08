@@ -25,7 +25,8 @@ footer {
 }
 
 .nav {
-    background-color: lightskyblue;
+    background-color: lightskyblue;    
+    width: 100%;
     padding: 10px;
     margin-top: 60px;
     top: 20%;

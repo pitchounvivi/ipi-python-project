@@ -7,7 +7,7 @@
     <nav class="nav">
         <button class="bouton" type="button">
             <a class="indexPage" href="{{ url_for('index')}}">Retour à l'Accueil</a>
-        </button> 
+        </button>
         <button class="bouton" type="button">
             <a class="logout" href="{{ url_for('auth.logout')}}">Déconnexion</a>
         </button> 
@@ -16,6 +16,18 @@
 
     <h1>LIVRE</h1>
 
-    
-    
+    <h2>{{ book['book_title'] }}</h2>
+
+    <hr>
+    <strong>Un résumé</strong>
+    <p>{{ book['book_resume'] }}</p>
+    <hr>
+
+    <p>Souhaitez-vous commencer ?</p>
+    <button class="bouton" type="button">
+        <a class="page" href="#">
+            Commencer la lecture
+        </a>
+    </button>
+
 {% endblock %}
