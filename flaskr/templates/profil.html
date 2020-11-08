@@ -14,6 +14,64 @@
     </nav>
 {% endblock %}
 
-    <h1>Accueil</h1>
+    <div class="thumbnail">
+        <h1>Mon Profil</h1>
+        <form method="POST">
+            <div>
+                <label for="username">Pseudo</label>
+                <input type="text" name="username" id="username" required/>
+            </div>
+            <div>
+                <label for="lastname">Nom</label>
+                <input type="text" name="lastname" id="lastname" required/>
+                <label for="firstname">Prénom</label>
+                <input type="text" name="firstname" id="firstname" autofocus required/>
+            </div>
+            <div>
+                <input type="submit" value="Valider"/>
+                <input type="reset" value="Annuler"/>
+            </div>
+        </form>
+    </div>
+
+    <div class="thumbnail">
+        <h1>Modifier mon adresse mail</h1>
+        <form method="POST">
+            <div>
+              <label for="old_mail">Adresse e-mail</label>
+              <input type="email" name="old_mail" id="old_mail" required>
+            </div>
+            <div>
+              <label for="new_mail">Nouvelle adresse e-mail *</label>
+              <input type="email" name="new_mail" id="new_mail" required>
+              <label for="mail_confirm">Confirmation nouvelle adresse e-mail *</label>
+              <input type="email" name="mail_confirm" id="mail_confirm" required>
+            </div>
+            <div>
+              <input type="submit" value="Valider">
+              <input type="reset" value="Annuler"/>
+            </div>
+        </form>
+    </div>
+
+    <div class="thumbnail">
+        <h1>Modifier mon mot de passe</h1>
+        <form method="POST">
+            <div>
+              <label for="old_password">Ancien mot de passe *</label>
+              <input type="password" name="old_password" id="old_password" required>
+            </div>
+            <div>
+              <label for="new_password">Nouveau mot de passe *</label>
+              <input type="password" name="new_password" id="new_password" required>
+              <label for="password_confirm">Confirmation nouveau mot de passe *</label>
+              <input type="password" name="password_confirm" id="password_confirm" required>
+            </div>
+            <div>
+              <input type="submit" value="Valider">
+              <input type="reset" value="Annuler"/>
+            </div>
+        </form>
+    </div>
     
 {% endblock %}
