@@ -50,7 +50,18 @@ def create_app(test_config=None) :
             pseudo = session['username']
         return render_template('homepage.html', pseudo=pseudo)
 
-    @app.route('/profil/')
+    # @app.route('/profil/')
+    # def profil():
+    #     """profil"""
+    #     if session:
+    #         username = session['username']            
+    #         firstname = session['firstname']
+    #         lastname = session['lastname']
+    #         email = session['email']
+
+    #     return render_template('profil.html', username=username, firstname=firstname, lastname=lastname, email=email)
+    
+    @app.route('/profil/', methods=('GET', 'POST'))
     def profil():
         """profil"""
         if session:
@@ -59,18 +70,35 @@ def create_app(test_config=None) :
             lastname = session['lastname']
             email = session['email']
 
-        return render_template('profil.html', username=username, firstname=firstname, lastname=lastname, email=email)
-    
-    @app.route('/profil/', methods=('GET', 'POST'))
-    def update():
-        """update profil"""
-        if request.method == 'POST' and "id" in session:
+        if request.method == 'POST':
             user_id = session['id']
-            username = request.form['username']
+            username = session['username'] if None else request.form.get('username')
+            firstname = session['firstname'] if None else request.form.get('firstname')
+            lastname = session['lastname'] if None else request.form.get('lastname')
+            new_mail = request.form.get('new_mail')
+            mail_confirm = request.form.get('mail_confirm')
+
+            if new_mail == mail_confirm and mail_confirm != None :
+                email = mail_confirm
+
             db = get_db()
-            user = db.execute('UPDATE user SET user_username = ? WHERE user_id = ?', (username, user_id,))
+            user = db.execute('UPDATE user SET user_username = ?, user_firstname = ?, user_lastname = ?, user_email = ? WHERE user_id = ?', (username, firstname, lastname, email, user_id,))
             db.commit()
-        return render_template('profil.html', username=username)
+        return render_template('profil.html', username=username, firstname=firstname, lastname=lastname, email=email)
+
+    # @app.route('/profil/', methods=('GET', 'POST'))
+    # def update_second_form():
+    #     """update second form"""
+    #     if request.method == 'POST' and "id" in session:
+    #         user_id = session['id']
+    #         email = request.form['username']
+    #         new_mail = request.form['new_mail']
+    #         mail_confirm = request.form['mail_confirm']
+    #         if new_mail == mail_confirm:
+    #             db = get_db()
+    #             user = db.execute('UPDATE user SET user_email = ? WHERE user_id = ?', (mail_confirm, user_id,))
+    #             db.commit()
+    #     return render_template('profil.html', mail_confirm=email)
     
     # Initialize DataBase
     db.init_app(app)
