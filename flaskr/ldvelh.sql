@@ -63,6 +63,7 @@ CREATE TABLE user (
 -- Area for filling tables for the site
 ------------------------------------------------------------------
 
+
 -- Table : book
 INSERT INTO book (book_title, book_resume, book_first_chap)
  VALUES
@@ -79,10 +80,13 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
  ('Chap 1 : début',
  '<p>une super histoire</p> 
  <form method="POST"> 
+ <p>
  <label for="2">Vous voulez allez au 2</label>
  <input type="radio" name="choix" value="2" />
+ </p><p>
  <label for="4">Vous voulez allez au 4</label>
  <input type="radio" name="choix" value="4" />
+ </p>
  <input type="submit" value="Valider"/>
  </form>', 
  1)
@@ -92,10 +96,13 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
  ('Chap 2 : suite *',
  '<p>un bout d''histoire</p>
  <form method="POST"> 
+ <p>
  <label for="3">Vous voulez allez au 3</label>
  <input type="radio" name="choix" value="3" />
+ </p><p>
  <label for="5">Vous voulez allez au 5</label>
  <input type="radio" name="choix" value="5" />
+ </p>
  <input type="submit" value="Valider"/>
  </form>', 
  1)
@@ -105,10 +112,13 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
  ('Chap 3 : suite **',
  '<p>un autre bout d''histoire</p>
  <form method="POST"> 
+ <p>
  <label for="7">Vous voulez allez au 7</label>
  <input type="radio" name="choix" value="7" />
+ </p><p>
  <label for="5">Vous voulez allez au 5</label>
  <input type="radio" name="choix" value="5" />
+ </p>
  <input type="submit" value="Valider"/>
  </form>', 
  1)
@@ -118,10 +128,13 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
  ('Chap 4 : suite ***',
  '<p>un rebondissement d''histoire</p>
  <form method="POST"> 
+ <p>
  <label for="6">Vous voulez allez au 6</label>
  <input type="radio" name="choix" value="6" />
+ </p><p>
  <label for="8">Vous voulez allez au 8</label>
  <input type="radio" name="choix" value="8" />
+ </p>
  <input type="submit" value="Valider"/>
  </form>', 
  1)
@@ -131,10 +144,13 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
  ('Chap 5 : suite ****',
  '<p>une étape de l''histoire</p>
  <form method="POST"> 
+ <p>
  <label for="3">Vous voulez allez au 3</label>
  <input type="radio" name="choix" value="3" />
+ </p><p>
  <label for="7">Vous voulez allez au 7</label>
  <input type="radio" name="choix" value="7" />
+ </p>
  <input type="submit" value="Valider"/>
  </form>', 
  1)
@@ -144,10 +160,13 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
  ('Chap 6 : suite *****',
  '<p>une nouvelle étape de l''histoire</p>
  <form method="POST"> 
+ <p>
  <label for="4">Vous voulez allez au 4</label>
  <input type="radio" name="choix" value="4" />
+ </p><p>
  <label for="8">Vous voulez allez au 8</label>
  <input type="radio" name="choix" value="8" />
+ </p>
  <input type="submit" value="Valider"/>
  </form>', 
  1)
@@ -157,10 +176,13 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
  ('Chap 7 : suite ******',
  '<p>une autre étape de l''histoire</p>
  <form method="POST"> 
+ <p>
  <label for="8">Vous voulez allez au 8</label>
  <input type="radio" name="choix" value="8" />
+ </p> <p>
  <label for="5">Vous voulez allez au 5</label>
  <input type="radio" name="choix" value="5" />
+ </p>
  <input type="submit" value="Valider"/>
  </form>', 
  1)
