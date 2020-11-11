@@ -31,28 +31,14 @@ def page(book_id):
     """Display page chapter 1"""
     db = get_db()
     book = db.execute(
-        'SELECT * FROM book WHERE book_id = ?',(book_id,)).fetchone()
-    
-    chap = db.execute(
         'SELECT * FROM book JOIN chapter WHERE chapter.chap_id = book.book_first_chap '
         + ' AND book.book_id = ?',(book_id,)).fetchone()
     db.commit()
-    return render_template('bookstore/page.html', book=book, chap=chap)
+    return render_template('bookstore/page.html', book=book)
 
 
 @bp.route('/book/<book_id>/page/<page_id>/')
 def page_other(book_id,page_id):
     """Display other pages"""
-    # book_id = request.args['book_id']
-    # page = request.args['page_id']
 
-    # db = get_db()
-    # book = db.execute(
-    #     'SELECT * FROM book WHERE book_id = ?',(book_id,)).fetchone()
-    
-    # chap = db.execute(
-    #     'SELECT * FROM chapter WHERE book_id = ? '
-    #     + 'AND chap_id = ?',(page,)).fetchone()
-    # db.commit()
-
-    return render_template('bookstore/page_other.html')
+    return render_template('bookstore/page_other.html', book=book_id, chap=page_id)

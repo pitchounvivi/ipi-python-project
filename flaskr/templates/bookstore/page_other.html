@@ -1,6 +1,6 @@
 {% extends 'index.html' %}
 
-{% block title%}PAGE X{% endblock %}
+{% block title%}{{ book['book_title'] }}{% endblock %}
 
 {% block content %}
 {% block nav %}
@@ -18,6 +18,16 @@
     <p>Vous lisez : </p>
     <h1>page autre</h1>
     
-    <h1>LIVRE X</h1>
+    <h1>{{ book['book_title'] }}</h1>
+
+    <hr>
+    <h2>{{ chap['chap_title'] }}</h2>
+    
+    <hr>
+    <p>{{ chap['chap_content'] | safe }}</p>
+
+
+    {{ book }}
+    {{ chap }}
 
 {% endblock %}
