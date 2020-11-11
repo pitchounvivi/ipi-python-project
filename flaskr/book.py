@@ -37,8 +37,14 @@ def page(book_id):
     return render_template('bookstore/page.html', book=book)
 
 
-@bp.route('/book/<book_id>/page/<page_id>/')
+@bp.route('/book/<book_id>/page/<page_id>/', methods=('GET', 'POST'))
 def page_other(book_id,page_id):
+    """Validation form choice"""
+    if request.method == 'POST':
+        choose = request.form['choix']
+        book = request.form['book']
+        return redirect(url_for('bookstore.page_other', book_id=book, page_id=choose))
+
     """Display other pages"""
     db = get_db()
     book = db.execute(
