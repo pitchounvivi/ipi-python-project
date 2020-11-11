@@ -15,13 +15,15 @@
     </nav>
 {% endblock %}
 
-    <p>Vous lisez : </p>
-    <h1>{{ book['book_title'] }}</h1>
+    <section>
+        <p>Vous lisez : </p>
+        <h1>{{ book['book_title'] }}</h1>
 
-    <hr>
-    <h2>{{ book['chap_title'] }}</h2>
+        <hr>
+        <h2>{{ book['chap_title'] }}</h2>
+        
+        <hr>
+        <p>{{ book['chap_content'] | safe }}</p>
+    </section>
     
-    <hr>
-    <p>{{ book['chap_content'] | safe }}</p>
-
 {% endblock %}

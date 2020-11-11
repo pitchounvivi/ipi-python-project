@@ -15,20 +15,22 @@
     </nav>
 {% endblock %}
 
-    <h1>LIVRE</h1>
+    <section>
+        <h1>LIVRE</h1>
 
-    <h2>{{ book['book_title'] }}</h2>
+        <h2>{{ book['book_title'] }}</h2>
 
-    <hr>
-    <strong>Un résumé</strong>
-    <p>{{ book['book_resume'] }}</p>
-    <hr>
+        <hr>
+        <strong>Un résumé</strong>
+        <p>{{ book['book_resume'] }}</p>
+        <hr>
 
-    <p>Souhaitez-vous commencer la lecture ?</p>
-    <button class="bouton" type="button">
-        <a class="page" href="{{ url_for('bookstore.page', book_id=book['book_id'],)}}">
-            Commencer la lecture
-        </a>
-    </button>
+        <p>Souhaitez-vous commencer la lecture ?</p>
+        <button class="bouton" type="button">
+            <a class="page" href="{{ url_for('bookstore.page', book_id=book['book_id'],)}}">
+                Commencer la lecture
+            </a>
+        </button>
+    </section>
 
 {% endblock %}

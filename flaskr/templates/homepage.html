@@ -11,17 +11,19 @@
     </nav>
 {% endblock %}
 
-    <h1>Accueil</h1>
+    <section>
+        <h1>Accueil</h1>
 
-    <p>Voici une liste de livres disponibles : </p> 
+        <p>Voici une liste de livres disponibles : </p> 
 
-    <hr>
-
-    {% for book in books %}
-        <a class="book" href="{{ url_for('bookstore.book', book_id=book['book_id'],)}}">
-            <h2>{{ book['book_title'] }}</h2>
-        </a>
         <hr>
-    {% endfor %}
+
+        {% for book in books %}
+            <a class="book" href="{{ url_for('bookstore.book', book_id=book['book_id'],)}}">
+                <h2>{{ book['book_title'] }}</h2>
+            </a>
+            <hr>
+        {% endfor %}
+    </section>
     
 {% endblock %}

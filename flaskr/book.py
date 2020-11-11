@@ -20,35 +20,28 @@ def book(book_id):
 
     return render_template('bookstore/book.html', book=book)
 
-@bp.route('/book/<book_id>/page/', methods=('GET', 'POST'))
-def page(book_id):
-    """Validation form choice"""
-    if request.method == 'POST':
-        choose = request.form['choix']
-        book = request.form['book']
-        return redirect(url_for('bookstore.page_other', book_id=book, page_id=choose))
-
-    db = get_db()
-    book = db.execute(
-        'SELECT * FROM book JOIN chapter WHERE chapter.chap_id = book.book_first_chap '
-        + ' AND book.book_id = ?',(book_id,)).fetchone()
-    db.commit()
-    return render_template('bookstore/page.html', book=book)
-
-
+@bp.route('/book/<book_id>/page/', defaults={'page_id': 0}, methods=('GET', 'POST'))
 @bp.route('/book/<book_id>/page/<page_id>/', methods=('GET', 'POST'))
-def page_other(book_id,page_id):
-    """Validation form choice"""
+def page(book_id,page_id):
+    """displays a page according to the book and the requested page"""
     if request.method == 'POST':
         choose = request.form['choix']
         book = request.form['book']
-        return redirect(url_for('bookstore.page_other', book_id=book, page_id=choose))
+        return redirect(url_for('bookstore.page', book_id=book, page_id=choose,))
+
+    if page_id == 0:
+        db = get_db()
+        book = db.execute(
+            'SELECT * FROM book JOIN chapter WHERE chapter.chap_id = book.book_first_chap '
+            + ' AND book.book_id = ?',(book_id,)).fetchone()
+        db.commit()
+        return render_template('bookstore/page.html', book=book)
 
     db = get_db()
     book = db.execute(
         'SELECT * FROM book JOIN chapter WHERE chapter.book_id = book.book_id '
         + ' AND chapter.chap_id = ? '
-        + ' AND book.book_id = ? ',(page_id,book_id)).fetchone()
+        + ' AND book.book_id = ? ',(page_id,book_id,)).fetchone()
     db.commit()
 
-    return render_template('bookstore/page_other.html', book=book)
+    return render_template('bookstore/page.html', book=book)

@@ -49,3 +49,7 @@ h1 {
     font-weight: bold;
     color: magenta;
 }
+
+section {
+    padding: 10px;
+}

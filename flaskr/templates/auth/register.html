@@ -14,38 +14,40 @@
     </nav>
 {% endblock %}
 
-    <h1>Bienvenue</h1>
-    <p class="info">Veuillez-vous enregistrer</p>
+    <section>
+        <h1>Bienvenue</h1>
+        <p class="info">Veuillez-vous enregistrer</p>
 
-    <form method="POST">
-        <p>
-            <label for="username">Votre pseudo :</label>
-            <input type="text" name="username" id="username" required/>
-        </p>
-        <p>
-            <label for="lastname">Votre nom :</label>
-            <input type="text" name="lastname" id="lastname" required/>
-        </p>
-        <p>
-            <label for="firstname">Votre prénom :</label>
-            <input type="text" name="firstname" id="firstname" autofocus required/>
-        </p>
-        <p>
-            <label for="email">Votre email :</label>
-            <input type="email" name="email" id="email" required/>
-        </p>
-        <p>
-            <label for="password">Votre mot de passe :</label>
-            <input type="password" name="password" id="password" required/>
-        </p>
-        <input type="submit" value="Valider"/>
-        <input type="reset" value="Effacer"/>
-    </form>
+        <form method="POST">
+            <p>
+                <label for="username">Votre pseudo :</label>
+                <input type="text" name="username" id="username" autofocus required/>
+            </p>
+            <p>
+                <label for="lastname">Votre nom :</label>
+                <input type="text" name="lastname" id="lastname" required/>
+            </p>
+            <p>
+                <label for="firstname">Votre prénom :</label>
+                <input type="text" name="firstname" id="firstname" required/>
+            </p>
+            <p>
+                <label for="email">Votre email :</label>
+                <input type="email" name="email" id="email" required/>
+            </p>
+            <p>
+                <label for="password">Votre mot de passe :</label>
+                <input type="password" name="password" id="password" required/>
+            </p>
+            <input type="submit" value="Valider"/>
+            <input type="reset" value="Effacer"/>
+        </form>
 
-    <br/>
-    <br/>
-    {% for message in get_flashed_messages() %}
-        <div class="flash">!!! {{ message }} !!!</div>
-    {% endfor %}
+        <br/>
+        <br/>
+        {% for message in get_flashed_messages() %}
+            <div class="flash">!!! {{ message }} !!!</div>
+        {% endfor %}
+    </section>
 
 {% endblock %}
