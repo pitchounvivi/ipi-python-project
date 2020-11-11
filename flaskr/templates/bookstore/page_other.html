@@ -19,9 +19,9 @@
     <h1>{{ book['book_title'] }}</h1>
 
     <hr>
-    <h2>{{ chap['chap_title'] }}</h2>
+    <h2>{{ book['chap_title'] }}</h2>
     
     <hr>
-    <p>{{ chap['chap_content'] | safe }}</p>
+    <p>{{ book['chap_content'] | safe }}</p>
 
 {% endblock %}

@@ -46,11 +46,9 @@ def page_other(book_id,page_id):
 
     db = get_db()
     book = db.execute(
-        'SELECT * FROM book WHERE book_id = ?',(book_id,)).fetchone()
-
-    chap = db.execute(
         'SELECT * FROM book JOIN chapter WHERE chapter.book_id = book.book_id '
-        + ' AND chapter.chap_id = ?',(page_id,)).fetchone()
+        + ' AND chapter.chap_id = ? '
+        + ' AND book.book_id = ? ',(page_id,book_id)).fetchone()
     db.commit()
 
-    return render_template('bookstore/page_other.html', book=book, chap=chap)
+    return render_template('bookstore/page_other.html', book=book)
