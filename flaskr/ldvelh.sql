@@ -197,7 +197,15 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
 INSERT INTO chapter (chap_title, chap_content, book_id)
  VALUES
  ('Chap 8 : fin',
- '<p>fin de l''histoire</p>', 
+ '<p>fin de l''histoire</p>
+ <form method="POST"> 
+ <p>
+ <label for="8">Souhaitez-vous recommencer l''histoire ?</label>
+ <input type="hidden" name="choix" value="1" />
+ </p>
+ <input type="hidden" name="book" value="1"/>
+ <input type="submit" value="Valider"/>
+ </form>', 
  1)
 ;
 

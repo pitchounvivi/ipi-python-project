@@ -28,7 +28,6 @@ def page(book_id):
         book = request.form['book']
         return redirect(url_for('bookstore.page_other', book_id=book, page_id=choose))
 
-    """Display page chapter 1"""
     db = get_db()
     book = db.execute(
         'SELECT * FROM book JOIN chapter WHERE chapter.chap_id = book.book_first_chap '
@@ -45,7 +44,6 @@ def page_other(book_id,page_id):
         book = request.form['book']
         return redirect(url_for('bookstore.page_other', book_id=book, page_id=choose))
 
-    """Display other pages"""
     db = get_db()
     book = db.execute(
         'SELECT * FROM book WHERE book_id = ?',(book_id,)).fetchone()
