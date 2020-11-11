@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block title%}PAGE X{% endblock %}
+
+{% block content %}
+{% block nav %}
+    <nav class="nav">
+        <button class="bouton" type="button">
+            <a class="bookstore" href="{{ url_for('homepage')}}">Retour à la bibliothèque</a>
+        </button>
+
+        <button class="bouton" type="button">
+            <a class="logout" href="{{ url_for('auth.logout')}}">Déconnexion</a>
+        </button> 
+    </nav>
+{% endblock %}
+
+    <p>Vous lisez : </p>
+    <h1>page autre</h1>
+    
+    <h1>LIVRE X</h1>
+
+{% endblock %}

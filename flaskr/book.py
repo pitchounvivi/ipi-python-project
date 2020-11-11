@@ -1,7 +1,7 @@
 """Book Module"""
 
 from flask import (
-    Blueprint, render_template
+    Blueprint, render_template, request, redirect, url_for
 )
 from werkzeug.exceptions import abort
 
@@ -20,9 +20,15 @@ def book(book_id):
 
     return render_template('bookstore/book.html', book=book)
 
-@bp.route('/book/<book_id>/page/')
+@bp.route('/book/<book_id>/page/', methods=('GET', 'POST'))
 def page(book_id):
-    """Display one page"""
+    """Validation form choice"""
+    if request.method == 'POST':
+        choose = request.form['choix']
+        book = request.form['book']
+        return redirect(url_for('bookstore.page_other', book_id=book, page_id=choose))
+
+    """Display page chapter 1"""
     db = get_db()
     book = db.execute(
         'SELECT * FROM book WHERE book_id = ?',(book_id,)).fetchone()
@@ -32,3 +38,19 @@ def page(book_id):
         + ' AND book.book_id = ?',(book_id,)).fetchone()
     db.commit()
     return render_template('bookstore/page.html', book=book, chap=chap)
+
+
+@bp.route('/book/<book_id>/page/<page_id>/')
+def page_other(book_id,page_id):
+    """Display other pages"""
+    # book = request.args['book_id']
+    # chap = request.args['page_id']
+
+    # db = get_db()
+  
+    # page = db.execute(
+    #     'SELECT * FROM chapter WHERE book_id = ? '
+    #     + 'AND chap_id = ?',(book,chap,)).fetchone()
+
+    # db.commit()
+    return render_template('bookstore/page_other.html')

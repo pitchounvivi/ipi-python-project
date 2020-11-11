@@ -87,6 +87,7 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
  <label for="4">Vous voulez allez au 4</label>
  <input type="radio" name="choix" value="4" />
  </p>
+ <input type="hidden" name="book" value="1"/>
  <input type="submit" value="Valider"/>
  </form>', 
  1)
@@ -103,6 +104,7 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
  <label for="5">Vous voulez allez au 5</label>
  <input type="radio" name="choix" value="5" />
  </p>
+ <input type="hidden" name="book" value="1"/>
  <input type="submit" value="Valider"/>
  </form>', 
  1)
@@ -119,6 +121,7 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
  <label for="5">Vous voulez allez au 5</label>
  <input type="radio" name="choix" value="5" />
  </p>
+ <input type="hidden" name="book" value="1"/>
  <input type="submit" value="Valider"/>
  </form>', 
  1)
@@ -135,6 +138,7 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
  <label for="8">Vous voulez allez au 8</label>
  <input type="radio" name="choix" value="8" />
  </p>
+ <input type="hidden" name="book" value="1"/>
  <input type="submit" value="Valider"/>
  </form>', 
  1)
@@ -151,6 +155,7 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
  <label for="7">Vous voulez allez au 7</label>
  <input type="radio" name="choix" value="7" />
  </p>
+ <input type="hidden" name="book" value="1"/>
  <input type="submit" value="Valider"/>
  </form>', 
  1)
@@ -167,6 +172,7 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
  <label for="8">Vous voulez allez au 8</label>
  <input type="radio" name="choix" value="8" />
  </p>
+ <input type="hidden" name="book" value="1"/>
  <input type="submit" value="Valider"/>
  </form>', 
  1)
@@ -183,6 +189,7 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
  <label for="5">Vous voulez allez au 5</label>
  <input type="radio" name="choix" value="5" />
  </p>
+ <input type="hidden" name="book" value="1"/>
  <input type="submit" value="Valider"/>
  </form>', 
  1)
@@ -198,7 +205,7 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
 INSERT INTO chapter (chap_title, chap_content, book_id)
  VALUES
  ('Chap 1 : Début du livre 2',
- '<p>Début de l''histoire</p>', 
+ '<p>Début de l''histoire 2</p>', 
  2)
 ;
 
