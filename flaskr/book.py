@@ -35,7 +35,8 @@ def page(book_id,page_id):
         db = get_db()
         #par défaut, on affiche la première page du livre
         book = db.execute(
-            'SELECT * FROM book JOIN chapter WHERE chapter.chap_id = book.book_first_chap '
+            'SELECT * FROM book JOIN chapter '
+            + ' WHERE chapter.chap_id = book.book_first_chap '
             + ' AND book.book_id = ?',(book_id,)).fetchone()
 
         db.execute(
@@ -66,7 +67,9 @@ def reading():
     user = session['id']
 
     db = get_db()
-    books = db.execute('SELECT * FROM lecture WHERE user_id = ?', (user,)).fetchall()
+    books = db.execute('SELECT * FROM lecture '
+        + ' JOIN book WHERE book.book_id = lecture.book_id '
+        + ' AND user_id = ?', (user,)).fetchall()
     db.commit()
 
     return render_template('bookstore/reading.html', username=username, books=books)
