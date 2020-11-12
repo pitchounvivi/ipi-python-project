@@ -29,19 +29,23 @@ def page(book_id,page_id):
         book = request.form['book']
         return redirect(url_for('bookstore.page', book_id=book, page_id=choose,))
 
+    user_id = session['id']
+
     if page_id == 0:
         db = get_db()
+        #par défaut, on affiche la première page du livre
         book = db.execute(
             'SELECT * FROM book JOIN chapter WHERE chapter.chap_id = book.book_first_chap '
             + ' AND book.book_id = ?',(book_id,)).fetchone()
 
         db.execute(
-            'INSERT INTO lecture (user_id, book_id, chap_id)'
-            + 'VALUES (?, ?, ?)',(1, book_id, page_id,))
+                'INSERT INTO lecture (user_id, book_id, chap_id)'
+                + 'VALUES (?, ?, ?)',(user_id, book_id, page_id,))
 
         db.commit()
         return render_template('bookstore/page.html', book=book)
 
+    #on affiche la page demandée et on met à jour la table lecture
     db = get_db()
     book = db.execute(
         'SELECT * FROM book JOIN chapter WHERE chapter.book_id = book.book_id '
@@ -50,7 +54,7 @@ def page(book_id,page_id):
 
     db.execute(
         'UPDATE lecture SET chap_id = ?'
-        + 'WHERE user_id = ? AND book_id = ? ', (page_id, 1, book_id,))
+        + 'WHERE user_id = ? AND book_id = ? ', (page_id, user_id, book_id,))
 
     db.commit()
 
