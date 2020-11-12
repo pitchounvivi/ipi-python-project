@@ -33,7 +33,7 @@
                 {% for book in books %}
                     <tr>
                         <td>{{ book['book_title'] }}</td>
-                        <td>{{ book['chap_id'] }}</td>
+                        <td>{{ book['chap_title'] }}</td>
                         <td><form method="POST"> 
                                 <input type="hidden" name="book" value="{{ book['book_id'] }}"/>
                                 <input type="hidden" name="choix" value="{{ book['chap_id'] }}"/>

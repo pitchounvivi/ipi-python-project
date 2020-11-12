@@ -86,7 +86,8 @@ def reading():
 
     db = get_db()
     books = db.execute('SELECT * FROM lecture '
-        + ' JOIN book WHERE book.book_id = lecture.book_id '
+        + ' INNER JOIN book ON book.book_id = lecture.book_id '
+        + ' INNER JOIN chapter ON chapter.chap_id = lecture.chap_id '
         + ' AND user_id = ?', (user,)).fetchall()
     db.commit()
 
