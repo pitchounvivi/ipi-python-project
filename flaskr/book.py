@@ -61,10 +61,15 @@ def page(book_id,page_id):
 
     return render_template('bookstore/page.html', book=book)
 
-@bp.route('/book/reading/')
+@bp.route('/book/reading/', methods=('GET', 'POST'))
 def reading():
     username = session['username']
     user = session['id']
+
+    if request.method == 'POST':
+        choose = request.form['choix']
+        book = request.form['book']
+        return redirect(url_for('bookstore.page', book_id=book, page_id=choose,))
 
     db = get_db()
     books = db.execute('SELECT * FROM lecture '
