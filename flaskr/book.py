@@ -1,7 +1,7 @@
 """Book Module"""
 
 from flask import (
-    Blueprint, render_template, request, redirect, url_for
+    Blueprint, render_template, request, redirect, url_for, session
 )
 from werkzeug.exceptions import abort
 
@@ -58,4 +58,5 @@ def page(book_id,page_id):
 
 @bp.route('/book/reading/')
 def reading():
-    return render_template('bookstore/reading.html')
+    username = session['username']
+    return render_template('bookstore/reading.html', username=username)

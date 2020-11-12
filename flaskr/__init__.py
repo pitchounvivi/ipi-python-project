@@ -4,7 +4,7 @@
 """Application Module"""
 import os
 
-from flask import Flask, render_template, app, request
+from flask import Flask, render_template, app, request, session
 from flaskr.db import get_db
 
 # Call init_app function from db.py
@@ -50,7 +50,8 @@ def create_app(test_config=None) :
         db = get_db()
         books = db.execute('SELECT * FROM book').fetchall()
         db.commit()
-        return render_template('homepage.html', books=books)
+        username = session['username']
+        return render_template('homepage.html', books=books, username=username)
 
 
     # Initialize DataBase
