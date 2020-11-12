@@ -45,3 +45,8 @@ def page(book_id,page_id):
     db.commit()
 
     return render_template('bookstore/page.html', book=book)
+
+@bp.route('/book/reading/')
+def reading():
+    return render_template('bookstore/reading.html')
+    

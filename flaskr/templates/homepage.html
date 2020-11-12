@@ -14,7 +14,13 @@
     <section>
         <h1>Accueil</h1>
 
-        <p>Voici une liste de livres disponibles : </p> 
+        <p> Souhaitez-vous reprendre un livre en cour ? 
+            <button class="bouton" type="button">
+                <a class="reading" href="{{ url_for('bookstore.reading')}}">Reprendre une lecture</a>
+            </button>
+        </p>
+
+        <p>Ou découvrir un nouveau livre : </p> 
 
         <hr>
 
