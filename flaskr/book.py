@@ -41,7 +41,7 @@ def page(book_id,page_id):
 
         db.execute(
                 'INSERT INTO lecture (user_id, book_id, chap_id)'
-                + 'VALUES (?, ?, ?)',(user_id, book_id, page_id,))
+                + 'VALUES (?, ?, ?)',(user_id, book_id, book['book_first_chap'],))
 
         db.commit()
         return render_template('bookstore/page.html', book=book)
