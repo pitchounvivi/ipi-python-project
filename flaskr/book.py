@@ -39,9 +39,22 @@ def page(book_id,page_id):
             + ' WHERE chapter.chap_id = book.book_first_chap '
             + ' AND book.book_id = ?',(book_id,)).fetchone()
 
-        db.execute(
-                'INSERT INTO lecture (user_id, book_id, chap_id)'
-                + 'VALUES (?, ?, ?)',(user_id, book_id, book['book_first_chap'],))
+
+        #dans le cas où il s'agit d'une relecture dépuis le début
+        #on regarde s'il y a déjà ce livre pour le user
+        if db.execute(
+            'SELECT book_id FROM lecture WHERE user_id = ? AND book_id = ?', (user_id,book_id)
+        ).fetchone() is None:
+            #s'il n'y est pas, on insert les informations de lecture
+            db.execute(
+                    'INSERT INTO lecture (user_id, book_id, chap_id)'
+                    + 'VALUES (?, ?, ?)',(user_id, book_id, book['book_first_chap'],))
+        
+        #sinon on met seulement à jour
+        else:
+            db.execute(
+                'UPDATE lecture SET chap_id = ?'
+                + 'WHERE user_id = ? AND book_id = ? ', (book['book_first_chap'], user_id, book_id,))
 
         db.commit()
         return render_template('bookstore/page.html', book=book)
