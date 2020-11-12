@@ -4,6 +4,8 @@
 """Application Module"""
 import os
 
+from werkzeug.security import check_password_hash
+
 from flask import Flask, render_template, app, request, session
 
 from flaskr.db import get_db
@@ -50,17 +52,6 @@ def create_app(test_config=None) :
             pseudo = session['username']
         return render_template('homepage.html', pseudo=pseudo)
 
-    # @app.route('/profil/')
-    # def profil():
-    #     """profil"""
-    #     if session:
-    #         username = session['username']            
-    #         firstname = session['firstname']
-    #         lastname = session['lastname']
-    #         email = session['email']
-
-    #     return render_template('profil.html', username=username, firstname=firstname, lastname=lastname, email=email)
-    
     @app.route('/profil/', methods=('GET', 'POST'))
     def profil():
         """profil"""
@@ -69,6 +60,7 @@ def create_app(test_config=None) :
             firstname = session['firstname']
             lastname = session['lastname']
             email = session['email']
+            passw = session['password']
 
         if request.method == 'POST':
             user_id = session['id']
@@ -77,28 +69,27 @@ def create_app(test_config=None) :
             lastname = session['lastname'] if None else request.form.get('lastname')
             new_mail = request.form.get('new_mail')
             mail_confirm = request.form.get('mail_confirm')
+            new_password = request.form.get('new_password')
+            password_confirm = request.form.get('password_confirm')
+            password = request.form.get('password')
 
             if new_mail == mail_confirm and mail_confirm != None :
                 email = mail_confirm
+                username = session['username']
+                firstname = session['firstname']
+                lastname = session['lastname']
+            
+            if check_password_hash(passw, password):
+                if new_password == password_confirm and password_confirm != None:
+                    password = password_confirm
+                    username = session['username']
+                    firstname = session['firstname']
+                    lastname = session['lastname']
 
             db = get_db()
-            user = db.execute('UPDATE user SET user_username = ?, user_firstname = ?, user_lastname = ?, user_email = ? WHERE user_id = ?', (username, firstname, lastname, email, user_id,))
+            user = db.execute('UPDATE user SET user_username = ?, user_firstname = ?, user_lastname = ?, user_email = ?, user_password = ? WHERE user_id = ?', (username, firstname, lastname, email, password, user_id,))
             db.commit()
         return render_template('profil.html', username=username, firstname=firstname, lastname=lastname, email=email)
-
-    # @app.route('/profil/', methods=('GET', 'POST'))
-    # def update_second_form():
-    #     """update second form"""
-    #     if request.method == 'POST' and "id" in session:
-    #         user_id = session['id']
-    #         email = request.form['username']
-    #         new_mail = request.form['new_mail']
-    #         mail_confirm = request.form['mail_confirm']
-    #         if new_mail == mail_confirm:
-    #             db = get_db()
-    #             user = db.execute('UPDATE user SET user_email = ? WHERE user_id = ?', (mail_confirm, user_id,))
-    #             db.commit()
-    #     return render_template('profil.html', mail_confirm=email)
     
     # Initialize DataBase
     db.init_app(app)
