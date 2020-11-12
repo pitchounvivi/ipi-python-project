@@ -39,7 +39,6 @@ def page(book_id,page_id):
             + ' WHERE chapter.chap_id = book.book_first_chap '
             + ' AND book.book_id = ?',(book_id,)).fetchone()
 
-
         #dans le cas où il s'agit d'une relecture dépuis le début
         #on regarde s'il y a déjà ce livre pour le user
         if db.execute(
@@ -49,12 +48,12 @@ def page(book_id,page_id):
             db.execute(
                     'INSERT INTO lecture (user_id, book_id, chap_id)'
                     + 'VALUES (?, ?, ?)',(user_id, book_id, book['book_first_chap'],))
-        
+
         #sinon on met seulement à jour
         else:
             db.execute(
                 'UPDATE lecture SET chap_id = ?'
-                + 'WHERE user_id = ? AND book_id = ? ', (book['book_first_chap'], user_id, book_id,))
+                + 'WHERE user_id = ? AND book_id = ?',(book['book_first_chap'], user_id, book_id,))
 
         db.commit()
         return render_template('bookstore/page.html', book=book)
@@ -76,6 +75,7 @@ def page(book_id,page_id):
 
 @bp.route('/book/reading/', methods=('GET', 'POST'))
 def reading():
+    """possibility of resuming a book in progress"""
     username = session['username']
     user = session['id']
 
