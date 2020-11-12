@@ -34,6 +34,11 @@ def page(book_id,page_id):
         book = db.execute(
             'SELECT * FROM book JOIN chapter WHERE chapter.chap_id = book.book_first_chap '
             + ' AND book.book_id = ?',(book_id,)).fetchone()
+
+        db.execute(
+            'INSERT INTO lecture (user_id, book_id, chap_id)'
+            + 'VALUES (?, ?, ?)',(1, book_id, page_id,))
+
         db.commit()
         return render_template('bookstore/page.html', book=book)
 
@@ -42,6 +47,11 @@ def page(book_id,page_id):
         'SELECT * FROM book JOIN chapter WHERE chapter.book_id = book.book_id '
         + ' AND chapter.chap_id = ? '
         + ' AND book.book_id = ? ',(page_id,book_id,)).fetchone()
+
+    db.execute(
+        'UPDATE lecture SET chap_id = ?'
+        + 'WHERE user_id = ? AND book_id = ? ', (page_id, 1, book_id,))
+
     db.commit()
 
     return render_template('bookstore/page.html', book=book)
@@ -49,4 +59,3 @@ def page(book_id,page_id):
 @bp.route('/book/reading/')
 def reading():
     return render_template('bookstore/reading.html')
-    

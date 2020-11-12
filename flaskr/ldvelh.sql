@@ -41,8 +41,10 @@ CREATE TABLE chapter (
 DROP TABLE IF EXISTS lecture;
 
 CREATE TABLE lecture (
-    id_user INTEGER REFERENCES user (user_id),
-    chap_id INTEGER REFERENCES chapter (chap_id) 
+    lect_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES user (user_id),
+    book_id INTEGER REFERENCES book (book_id),
+    chap_id INTEGER REFERENCES chapter (chap_id)  
 );
 
 
