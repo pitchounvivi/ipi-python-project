@@ -20,6 +20,28 @@
 
         <p>Liste de livres en cours de lecture de <strong>{{username}}</strong></p>
 
+        <hr>
+        <table class="tableau">
+            <thead>
+                <tr>
+                    <th>Livre</th>
+                    <th>Chapitre en cours</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                    <tr>
+                        <td>{{ book['book_id'] }}</td>
+                        <td>{{ book['chap_id'] }}</td>
+                        <td><button class="bouton" type="button">
+                            <a class="reprendre" href="#">Reprendre</a>
+                        </button> </td>
+                    </tr>    
+                {% endfor %}
+            </tbody>
+        </table>
+
     </section>
 
 {% endblock %}

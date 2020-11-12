@@ -63,4 +63,10 @@ def page(book_id,page_id):
 @bp.route('/book/reading/')
 def reading():
     username = session['username']
-    return render_template('bookstore/reading.html', username=username)
+    user = session['id']
+
+    db = get_db()
+    books = db.execute('SELECT * FROM lecture WHERE user_id = ?', (user,)).fetchall()
+    db.commit()
+
+    return render_template('bookstore/reading.html', username=username, books=books)
