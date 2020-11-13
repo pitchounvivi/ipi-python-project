@@ -30,6 +30,12 @@
                 </tr>
             </thead>
             <tbody>
+                {% if not_book: %}
+                <tr>
+                    <td colspan="3">Vous n'avez pas de livre en cours</td>
+                </tr>
+                {% endif %}
+
                 {% for book in books %}
                     <tr>
                         <td>{{ book['book_title'] }}</td>
@@ -44,7 +50,6 @@
                 {% endfor %}
             </tbody>
         </table>
-
     </section>
 
 {% endblock %}

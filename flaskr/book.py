@@ -91,4 +91,10 @@ def reading():
         + ' AND user_id = ?', (user,)).fetchall()
     db.commit()
 
-    return render_template('bookstore/reading.html', username=username, books=books)
+    #faire un if : si books == none on utilise une variable qui est boolean pour afficher le block 
+    not_book=False
+       
+    if len(books) == 0:
+        not_book=True
+
+    return render_template('bookstore/reading.html', username=username, books=books, not_book=not_book)
