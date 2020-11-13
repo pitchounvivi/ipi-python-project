@@ -34,7 +34,6 @@ def create_app(test_config=None) :
     except OSError:
         pass
 
-
     #____ROUTES____
     # Config options
     # app.config.from_object('config')
@@ -52,7 +51,6 @@ def create_app(test_config=None) :
         db.commit()
         username = session['username']
         return render_template('homepage.html', books=books, username=username)
-
 
     # Initialize DataBase
     db.init_app(app)
