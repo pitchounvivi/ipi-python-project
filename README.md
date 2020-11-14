@@ -10,14 +10,18 @@ https://trello.com/b/W5tq8VA7/projet-python
 ==============================
 
 ## Récupérer le projet Github avec Git
-* Dans un terminal Bash
-```terminal
+* Dans le dossier que vous souhaitez : 
+
+Ouvrez un terminal Bash
+```terminal Bash
 git clone adresse_url_du_projet_github
 ```
 
 ==============================
 
 ## Procédure pour créer l'environnement virtuel
+* Aller dans le dossier du projet
+
 * Ouvrir l'invite de commande windows dans le projet Python
 Comme  : 
 
@@ -33,7 +37,7 @@ py -3 -m venv venv
 ## Procédure pour lancer l'environnement virtuel
 * Activer l'environnement virtuel
 ```terminal
-nom_du_dossier_de_l'environnement_virtuel\Scripts\activate
+venv\Scripts\activate
 ```
 
 ==============================
@@ -54,7 +58,7 @@ set FLASK_APP=flaskr
 set FLASK_ENV=developement
 ```
 
-* Initialisation de la bdd (laisser la variable DATABASE tel quel) : 
+* Initialisation de la bdd : 
 ```terminal
 flask init-db
 ```
