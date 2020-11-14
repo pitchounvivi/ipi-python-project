@@ -22,10 +22,9 @@ git clone adresse_url_du_projet_github
 ## Procédure pour créer l'environnement virtuel
 * Aller dans le dossier du projet
 
-* Ouvrir l'invite de commande windows dans le projet Python
-Comme  : 
+* Ouvrir l'invite de commande windows dans le projet Python : 
 
-Par exemple dans le chemin d'accès au dossier, taper directement : cmd
+    **Astuce : dans le chemin d'accès au dossier, taper directement : cmd
 
 * Créer le venv dans le projet Github
 ```terminal
@@ -42,7 +41,7 @@ venv\Scripts\activate
 
 ==============================
 
-## Procédure pour lancer le programme
+## Procédure pour lancer le programme en local
 * Installer les différents modules
 ```terminal
 pip install -r requirements.txt
@@ -55,7 +54,7 @@ set FLASK_APP=flaskr
 
 * Mode debug :
 ```terminal
-set FLASK_ENV=developement
+set FLASK_ENV=development
 ```
 
 * Initialisation de la bdd : 
@@ -67,3 +66,13 @@ flask init-db
 ```terminal
 flask run
 ```
+
+==============================
+
+## Utiliser le programme
+* Ouvrez votre navigateur préféré à l'adresse :
+http://127.0.0.1:5000/
+
+*  Voilà votre programme est désormais lancé !
+
+BONNE LECTURE
