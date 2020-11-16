@@ -58,7 +58,7 @@ def create_app(test_config=None) :
 
     @app.route('/profil/', methods=('GET', 'POST'))
     def profil():
-        """profil"""
+        """profil and update profil"""
         if session:
             username = session['username']            
             firstname = session['firstname']
@@ -71,29 +71,37 @@ def create_app(test_config=None) :
             username = session['username'] if None else request.form.get('username')
             firstname = session['firstname'] if None else request.form.get('firstname')
             lastname = session['lastname'] if None else request.form.get('lastname')
-            new_mail = request.form.get('new_mail')
-            mail_confirm = request.form.get('mail_confirm')
-            new_password = request.form.get('new_password')
-            password_confirm = request.form.get('password_confirm')
-            password = request.form.get('password')
 
-            if new_mail == mail_confirm and mail_confirm != None :
-                email = mail_confirm
-                username = session['username']
-                firstname = session['firstname']
-                lastname = session['lastname']
+
+            # new_mail = request.form.get('new_mail')
+            # mail_confirm = request.form.get('mail_confirm')
+            # new_password = request.form.get('new_password')
+            # password_confirm = request.form.get('password_confirm')
+            # password = request.form.get('password')
+
+            # if new_mail == mail_confirm and mail_confirm != None :
+            #     email = mail_confirm
+            #     username = session['username']
+            #     firstname = session['firstname']
+            #     lastname = session['lastname']
             
-            if check_password_hash(passw, password):
-                if new_password == password_confirm and password_confirm != None:
-                    password = password_confirm
-                    username = session['username']
-                    firstname = session['firstname']
-                    lastname = session['lastname']
+            # if check_password_hash(passw, password):
+            #     if new_password == password_confirm and password_confirm != None:
+            #         password = password_confirm
+            #         username = session['username']
+            #         firstname = session['firstname']
+            #         lastname = session['lastname']
+
+        #     db = get_db()
+        #     user = db.execute('UPDATE user SET user_username = ?, user_firstname = ?, user_lastname = ?, user_email = ?, user_password = ? WHERE user_id = ?', (username, firstname, lastname, email, password, user_id,))
+        #     db.commit()
+        # return render_template('profil.html', username=username, firstname=firstname, lastname=lastname, email=email)
+
 
             db = get_db()
-            user = db.execute('UPDATE user SET user_username = ?, user_firstname = ?, user_lastname = ?, user_email = ?, user_password = ? WHERE user_id = ?', (username, firstname, lastname, email, password, user_id,))
+            user = db.execute('UPDATE user SET user_username = ?, user_firstname = ?, user_lastname = ? WHERE user_id = ?', (username, firstname, lastname, user_id,))
             db.commit()
-        return render_template('profil.html', username=username, firstname=firstname, lastname=lastname, email=email)
+        return render_template('profil.html', username=username, firstname=firstname, lastname=lastname,)
     
     # Initialize DataBase
     db.init_app(app)
