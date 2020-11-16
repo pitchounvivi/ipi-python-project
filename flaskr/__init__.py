@@ -39,9 +39,6 @@ def create_app(test_config=None) :
         pass
 
     #____ROUTES____
-    # Config options
-    # app.config.from_object('config')
-
     @app.route('/')
     def index():
         """index"""
@@ -62,7 +59,7 @@ def create_app(test_config=None) :
     def profil():
         """profil and update profil"""
         if session:
-            username = session['username']            
+            username = session['username']
             firstname = session['firstname']
             lastname = session['lastname']
 
@@ -73,7 +70,9 @@ def create_app(test_config=None) :
             lastname = request.form['lastname']
 
             db = get_db()
-            db.execute('UPDATE user SET user_username = ?, user_firstname = ?, user_lastname = ? WHERE user_id = ?', (username, firstname, lastname, user_id,))
+            db.execute('UPDATE user SET user_username = ?, '
+                +' user_firstname = ?, user_lastname = ? WHERE user_id = ?',
+                (username, firstname, lastname, user_id,))
             db.commit()
 
             #remise à jour de le session
@@ -83,8 +82,9 @@ def create_app(test_config=None) :
             session['lastname'] = lastname
             return redirect(url_for('homepage'))
 
-        return render_template('profil.html', username=username, firstname=firstname, lastname=lastname,)
-    
+        return render_template('profil.html',
+            username=username, firstname=firstname, lastname=lastname,)
+
     # Initialize DataBase
     db.init_app(app)
 
