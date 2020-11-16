@@ -72,7 +72,7 @@ def create_app(test_config=None) :
             firstname = session['firstname'] if None else request.form.get('firstname')
             lastname = session['lastname'] if None else request.form.get('lastname')
 
-
+            # To Do: Finir la fonction, régler le problème de Type concernant le mot de passe 
             # new_mail = request.form.get('new_mail')
             # mail_confirm = request.form.get('mail_confirm')
             # new_password = request.form.get('new_password')
