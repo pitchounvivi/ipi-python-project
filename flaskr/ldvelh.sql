@@ -113,7 +113,7 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
 ;
 INSERT INTO chapter (chap_title, chap_content, book_id)
  VALUES
- ('Chap 3 : suite **',
+ ('Chap 3 : une autre suite',
  '<p>un autre bout d''histoire</p>
  <form method="POST"> 
  <p>
@@ -130,7 +130,7 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
 ;
 INSERT INTO chapter (chap_title, chap_content, book_id)
  VALUES
- ('Chap 4 : suite ***',
+ ('Chap 4 : une suite',
  '<p>un rebondissement d''histoire</p>
  <form method="POST"> 
  <p>
@@ -147,7 +147,7 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
 ;
 INSERT INTO chapter (chap_title, chap_content, book_id)
  VALUES
- ('Chap 5 : suite ****',
+ ('Chap 5 : quelque chose',
  '<p>une étape de l''histoire</p>
  <form method="POST"> 
  <p>
@@ -164,7 +164,7 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
 ;
 INSERT INTO chapter (chap_title, chap_content, book_id)
  VALUES
- ('Chap 6 : suite *****',
+ ('Chap 6 : suite encore une',
  '<p>une nouvelle étape de l''histoire</p>
  <form method="POST"> 
  <p>
@@ -181,7 +181,7 @@ INSERT INTO chapter (chap_title, chap_content, book_id)
 ;
 INSERT INTO chapter (chap_title, chap_content, book_id)
  VALUES
- ('Chap 7 : suite ******',
+ ('Chap 7 : suite suivante',
  '<p>une autre étape de l''histoire</p>
  <form method="POST"> 
  <p>
