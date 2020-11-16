@@ -4,7 +4,9 @@
 """Application Module"""
 import os
 
-from flask import Flask, render_template, app, request, session
+from flask import (
+    Flask, render_template, app, request, session, url_for, redirect
+)
 from werkzeug.security import check_password_hash
 
 from flaskr.db import get_db
@@ -63,44 +65,24 @@ def create_app(test_config=None) :
             username = session['username']            
             firstname = session['firstname']
             lastname = session['lastname']
-            email = session['email']
-            passw = session['password']
 
         if request.method == 'POST':
             user_id = session['id']
-            username = session['username'] if None else request.form.get('username')
-            firstname = session['firstname'] if None else request.form.get('firstname')
-            lastname = session['lastname'] if None else request.form.get('lastname')
-
-            # To Do: Finir la fonction, régler le problème de Type concernant le mot de passe 
-            # new_mail = request.form.get('new_mail')
-            # mail_confirm = request.form.get('mail_confirm')
-            # new_password = request.form.get('new_password')
-            # password_confirm = request.form.get('password_confirm')
-            # password = request.form.get('password')
-
-            # if new_mail == mail_confirm and mail_confirm != None :
-            #     email = mail_confirm
-            #     username = session['username']
-            #     firstname = session['firstname']
-            #     lastname = session['lastname']
-            
-            # if check_password_hash(passw, password):
-            #     if new_password == password_confirm and password_confirm != None:
-            #         password = password_confirm
-            #         username = session['username']
-            #         firstname = session['firstname']
-            #         lastname = session['lastname']
-
-        #     db = get_db()
-        #     user = db.execute('UPDATE user SET user_username = ?, user_firstname = ?, user_lastname = ?, user_email = ?, user_password = ? WHERE user_id = ?', (username, firstname, lastname, email, password, user_id,))
-        #     db.commit()
-        # return render_template('profil.html', username=username, firstname=firstname, lastname=lastname, email=email)
-
+            username = request.form['username']
+            firstname = request.form['firstname']
+            lastname = request.form['lastname']
 
             db = get_db()
-            user = db.execute('UPDATE user SET user_username = ?, user_firstname = ?, user_lastname = ? WHERE user_id = ?', (username, firstname, lastname, user_id,))
+            db.execute('UPDATE user SET user_username = ?, user_firstname = ?, user_lastname = ? WHERE user_id = ?', (username, firstname, lastname, user_id,))
             db.commit()
+
+            #remise à jour de le session
+            session['id'] = user_id
+            session['username'] = username
+            session['firstname'] = firstname
+            session['lastname'] = lastname
+            return redirect(url_for('homepage'))
+
         return render_template('profil.html', username=username, firstname=firstname, lastname=lastname,)
     
     # Initialize DataBase
