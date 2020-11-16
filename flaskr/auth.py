@@ -21,17 +21,7 @@ def register():
         db = get_db()
         error = None
 
-        if not username:
-            error = 'Username is required.'
-        elif not lastname:
-            error = 'Lastname is required.'
-        elif not firstname:
-            error = 'Firstname is required.'
-        elif not email:
-            error = 'Email is required.'
-        elif not password:
-            error = 'Password is required.'
-        elif db.execute(
+        if db.execute(
             'SELECT user_id FROM user WHERE user_username = ?', (username,)
         ).fetchone() is not None:
             error = 'User {} is already registered.'.format(username)
