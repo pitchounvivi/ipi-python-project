@@ -73,6 +73,10 @@ def login():
             session.clear()
             session['id'] = user['user_id']
             session['username'] = user['user_username']
+            session['firstname'] = user['user_firstname']
+            session['lastname'] = user['user_lastname']
+            session['email'] = user['user_email']
+            session['password'] = user['user_password']
             return redirect(url_for('homepage'))
 
         flash(error)
