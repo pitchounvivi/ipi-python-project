@@ -5,9 +5,9 @@
 {% block content %}
 {% block nav %}
     <nav class="nav">
-        <button class="bouton" type="button">
-            <a class="logout" href="{{ url_for('auth.logout')}}">Déconnexion</a>
-        </button> 
+        <form method="POST" action="{{ url_for('auth.logout')}}">
+            <input type="submit" class="logout" value="Déconnexion" />
+        </form>
         <button class="bouton" type="button">
             <a class="logout" href="{{ url_for('profil')}}">Mon Profil</a>
         </button> 

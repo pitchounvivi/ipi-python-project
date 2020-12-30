@@ -19,25 +19,22 @@ def register():
         firstname = request.form['firstname']
         email = request.form['email']
         password = request.form['password']
-        db = get_db()
-        error = None
 
+        db = get_db()
         if db.execute(
             'SELECT user_id FROM user WHERE user_username = ?', (username,)
         ).fetchone() is not None:
-            error = 'User {} is already registered.'.format(username)
+            flash('User {} is already registered.'.format(username))
+            return redirect(url_for('auth.register'))
 
-        if error is None:
-            db.execute(
-                'INSERT INTO user (user_username, user_lastname, '
-                'user_firstname, user_email, user_password)'
-                'VALUES (?, ?, ?, ?, ?)', (
-                    username, lastname, firstname, email,
-                    generate_password_hash(password)))
-            db.commit()
-            return redirect(url_for('auth.login'))
-
-        flash(error)
+        db.execute(
+            'INSERT INTO user (user_username, user_lastname, '
+            'user_firstname, user_email, user_password)'
+            'VALUES (?, ?, ?, ?, ?)', (
+                username, lastname, firstname, email,
+                generate_password_hash(password)))
+        db.commit()
+        return redirect(url_for('auth.login'))
 
     return render_template('auth/register.html')
 
@@ -52,14 +49,13 @@ def login():
         error = None
         user = db.execute(
             'SELECT * FROM user WHERE user_username = ?', (username,)
-            ).fetchone()
+        ).fetchone()
 
         if user is None:
             error = 'Incorrect username.'
         elif not check_password_hash(user['user_password'], password):
             error = 'Incorrect password.'
-
-        if error is None:
+        else:
             session.clear()
             session['id'] = user['user_id']
             session['username'] = user['user_username']
@@ -70,11 +66,12 @@ def login():
             return redirect(url_for('homepage'))
 
         flash(error)
+        return redirect(url_for('auth.login'))
 
     return render_template('auth/login.html')
 
 
-@bp.route('/logout')
+@bp.route('/logout', methods=('POST',))
 def logout():
     """Logout page clearing session."""
     session.clear()

@@ -24,10 +24,9 @@ def book(book_id):
     return render_template('bookstore/book.html', book=book)
 
 
-@bp.route('/book/<book_id>/page/', defaults={'page_id': 0},
-          methods=('GET', 'POST'))
+@bp.route('/book/<book_id>/page/', methods=('GET', 'POST'))
 @bp.route('/book/<book_id>/page/<page_id>/', methods=('GET', 'POST'))
-def page(book_id, page_id):
+def page(book_id, page_id=None):
     """Display a page according to the book and the requested page."""
     if request.method == 'POST':
         choose = request.form['choix']
@@ -36,10 +35,9 @@ def page(book_id, page_id):
             url_for('bookstore.page', book_id=book, page_id=choose))
 
     user_id = session['id']
+    db = get_db()
 
-    if page_id == 0:
-        db = get_db()
-
+    if page_id is None:
         # Display the first page by default.
         book = db.execute(
             'SELECT * FROM book JOIN chapter '
@@ -102,11 +100,6 @@ def reading():
         'INNER JOIN chapter ON chapter.chap_id = lecture.chap_id '
         'AND user_id = ?', (user,)).fetchall()
 
-    not_book = False
-
-    if len(books) == 0:
-        not_book = True
-
     return render_template(
         'bookstore/reading.html', username=username, books=books,
-        not_book=not_book)
+        not_book=(len(books) == 0))
