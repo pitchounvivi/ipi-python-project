@@ -1,17 +1,18 @@
-"""Authentification Module"""
+"""Authentication module."""
+
 from flask import (
     Blueprint, flash, redirect, render_template, request, session, url_for
 )
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from flaskr.db import get_db
+from .db import get_db
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 
 @bp.route('/register/', methods=('GET', 'POST'))
 def register():
-    """Register function"""
+    """Register page."""
     if request.method == 'POST':
         username = request.form['username']
         lastname = request.form['lastname']
@@ -29,10 +30,10 @@ def register():
         if error is None:
             db.execute(
                 'INSERT INTO user (user_username, user_lastname, '
-                + 'user_firstname, user_email, user_password)'
-                + 'VALUES (?, ?, ?, ?, ?)',
-                (username, lastname, firstname, email,
-                generate_password_hash(password)))
+                'user_firstname, user_email, user_password)'
+                'VALUES (?, ?, ?, ?, ?)', (
+                    username, lastname, firstname, email,
+                    generate_password_hash(password)))
             db.commit()
             return redirect(url_for('auth.login'))
 
@@ -40,9 +41,10 @@ def register():
 
     return render_template('auth/register.html')
 
+
 @bp.route('/login/', methods=('GET', 'POST'))
 def login():
-    """Login"""
+    """Login page."""
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -71,8 +73,9 @@ def login():
 
     return render_template('auth/login.html')
 
+
 @bp.route('/logout')
 def logout():
-    """deconnection and clear session"""
+    """Logout page clearing session."""
     session.clear()
     return redirect(url_for('index'))
