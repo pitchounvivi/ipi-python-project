@@ -4,8 +4,13 @@
 
 ==============================
 
-Trello
-https://trello.com/b/W5tq8VA7/projet-python
+# Outils et aide
+
+-Trello : https://trello.com/b/W5tq8VA7/projet-python
+- VS Code : penser à ajouter les extensions (le shell launcher pour avoir plusieurs terminaux et french language)
+
+pour Python, Jupyter qui facilite bien la vie !
+et dans le cadre de ce projet : SQLite.
 
 ==============================
 
