@@ -8,9 +8,9 @@
         <button class="bouton" type="button">
             <a class="indexPage" href="{{ url_for('homepage')}}">Retour aux livres</a>
         </button> 
-        <button class="bouton" type="button">
-            <a class="logout" href="{{ url_for('auth.logout')}}">Déconnexion</a>
-        </button> 
+        <form method="POST" action="{{ url_for('auth.logout')}}">
+            <input type="submit" class="logout" value="Déconnexion" />
+        </form>
     </nav>
 {% endblock %}
 
